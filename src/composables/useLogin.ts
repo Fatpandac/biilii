@@ -1,13 +1,22 @@
 import { useQRCode } from '@vueuse/integrations/useQRCode'
 import { useCookies } from '@vueuse/integrations/useCookies'
 
-const LOGIN_COOKIE_KEY = 'biilii'
+const LOGIN_COOKIE_KEYS = ['sid', 'DedeUserID__ckMd5', 'DedeUserID', 'bili_jct', 'SESSDATA']
 
 export function useLogin() {
-  const cookies = useCookies()
-  const state = ref(!!cookies.get(LOGIN_COOKIE_KEY))
+  const cookies = useCookies(LOGIN_COOKIE_KEYS)
+
+  const isLogin = ref(LOGIN_COOKIE_KEYS.map(cookieKey => cookies.get(cookieKey)).every(item => (item !== '' && item !== undefined)))
   const QRCodeURL = ref('')
   const qrcodeKey = ref('')
+
+  // quite if logged in
+  if (isLogin.value) {
+    return {
+      isLogin,
+      QRCode: useQRCode(QRCodeURL),
+    }
+  }
 
   async function fetchData() {
     const { url, qrcode_key } = await gennerateQRCode()
@@ -17,9 +26,7 @@ export function useLogin() {
   }
 
   const interval = setInterval(async () => {
-    const { res, cookie } = await checkQRCode(qrcodeKey.value)
-
-    console.log(res.data, cookie)
+    const { res } = await checkQRCode(qrcodeKey.value)
 
     if (res.data.code === 86038) {
       const { url, qrcode_key } = await gennerateQRCode()
@@ -28,12 +35,10 @@ export function useLogin() {
       qrcodeKey.value = qrcode_key
     }
 
-    if (res.data.code !== 0 || !cookie)
+    if (res.data.code !== 0 && !isLogin.value)
       return {}
 
-    cookies.set(LOGIN_COOKIE_KEY, cookie)
-    state.value = true
-
+    isLogin.value = true
     clearInterval(interval)
   }, 1000)
 
@@ -41,6 +46,6 @@ export function useLogin() {
 
   return {
     QRCode: useQRCode(QRCodeURL),
-    state,
+    isLogin,
   }
 }

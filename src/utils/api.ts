@@ -39,7 +39,7 @@ export async function gennerateQRCode() {
 }
 
 export async function checkQRCode(qrcodeKey: string) {
-  const res = await fetch(API.checkQRcodeStatus(qrcodeKey));
+  const res = await fetch(API.checkQRcodeStatus(qrcodeKey))
 
-  return { res: await res.json() as CheckQRCodeResponse, cookie: res.headers.get("set-cookie") };
+  return { res: await res.json() as CheckQRCodeResponse, cookie: res.headers.get('set-cookie') }
 }

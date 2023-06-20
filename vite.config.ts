@@ -39,7 +39,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/passport': {
-        target: 'https://passport.bilibili.com/x',
+        target: 'https://passport.bilibili.com',
         changeOrigin: true,
         rewrite: path => path.replace(/^\/passport/, ''),
         configure: (proxy, options) => {
@@ -49,7 +49,11 @@ export default defineConfig({
           }
 
           proxy.on('proxyRes', (proxyRes, _req, _res) => {
-            proxyRes.headers['set-cookie'] = proxyRes.headers['set-cookie']?.map(cookie => cookie.replace('Domain=bilibili.com;', '').replace('HttpOnly; Secure', ''))
+            proxyRes.headers['set-cookie']
+            = proxyRes.headers['set-cookie']
+                ?.map(cookie =>
+                  cookie.replace(/Domain=.*?bilibili.com;/, '')
+                    .replace('HttpOnly; Secure', ''))
           })
         },
       },

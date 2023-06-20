@@ -1,8 +1,11 @@
+import { useCookies } from '@vueuse/integrations/useCookies'
+
 const baseURL = '/passport'
 
 const API = {
-  gennerateQRCode: () => `${baseURL}/passport-login/web/qrcode/generate`,
-  checkQRcodeStatus: (qrcode_key: string) => `${baseURL}/passport-login/web/qrcode/poll?qrcode_key=${qrcode_key}`,
+  gennerateQRCode: () => `${baseURL}/x/passport-login/web/qrcode/generate`,
+  checkQRcodeStatus: (qrcode_key: string) => `${baseURL}/x/passport-login/web/qrcode/poll?qrcode_key=${qrcode_key}`,
+  logout: () => `${baseURL}/login/exit/v2`,
 }
 
 interface GennerateQRCodeResponse {
@@ -42,4 +45,17 @@ export async function checkQRCode(qrcodeKey: string) {
   const res = await fetch(API.checkQRcodeStatus(qrcodeKey))
 
   return { res: await res.json() as CheckQRCodeResponse, cookie: res.headers.get('set-cookie') }
+}
+
+export async function logout() {
+  const cookies = useCookies()
+  const res = await fetch(API.logout(), {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: `biliCSRF=${cookies.get('bili_jct')}`,
+  }).then(res => res.json())
+
+  return res
 }

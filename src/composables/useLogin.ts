@@ -4,6 +4,7 @@ import { useCookies } from '@vueuse/integrations/useCookies'
 const LOGIN_COOKIE_KEYS = ['sid', 'DedeUserID__ckMd5', 'DedeUserID', 'bili_jct', 'SESSDATA']
 
 export function useLogin() {
+  const user = userStore()
   const cookies = useCookies(LOGIN_COOKIE_KEYS)
 
   const isLogin = ref(LOGIN_COOKIE_KEYS.map(cookieKey => cookies.get(cookieKey)).every(item => (item !== '' && item !== undefined)))
@@ -39,8 +40,17 @@ export function useLogin() {
       return {}
 
     isLogin.value = true
+    user.fetchData()
+    user.setAll({
+      isLogin: false,
+    })
     clearInterval(interval)
   }, 1000)
+
+  // stop check qrcode state when component was unmount
+  onBeforeUnmount(() => {
+    clearInterval(interval)
+  })
 
   fetchData()
 

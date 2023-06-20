@@ -41,9 +41,6 @@ export function useLogin() {
 
     isLogin.value = true
     user.fetchData()
-    user.setAll({
-      isLogin: false,
-    })
     clearInterval(interval)
   }, 1000)
 

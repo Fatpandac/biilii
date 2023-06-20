@@ -13,47 +13,48 @@ export interface UserInfo {
   following: number
   follower: number
   dynamic_count: number
+  moral: number
+}
+
+const DEFAULT = {
+  isLogin: false,
+  face: '',
+  uname: '',
+  level_info: {
+    current_level: 0,
+    current_min: 0,
+    current_exp: 0,
+    next_exp: 0,
+  },
+  mid: 0,
+  money: 0,
+  following: 0,
+  follower: 0,
+  dynamic_count: 0,
+  moral: 0,
 }
 
 export const userStore = defineStore('user', () => {
-  const userInfo = ref<UserInfo>({
-    isLogin: false,
-    face: '',
-    uname: '',
-    level_info: {
-      current_level: 0,
-      current_min: 0,
-      current_exp: 0,
-      next_exp: 0,
-    },
-    mid: 0,
-    money: 0,
-    following: 0,
-    follower: 0,
-    dynamic_count: 0,
-  })
+  const userInfo = ref<UserInfo>(DEFAULT)
 
   const fetchData = async () => {
     const res = await getUserInfo()
 
-    userInfo.value = {
-      ...userInfo.value,
-      ...res.data,
+    if (res.data.isLogin) {
+      userInfo.value = {
+        ...userInfo.value,
+        ...res.data,
+      }
+    }
+    else {
+      userInfo.value = DEFAULT
     }
   }
 
   fetchData()
 
-  function setAll(newUserInfo: Partial<UserInfo>) {
-    userInfo.value = {
-      ...userInfo.value,
-      ...newUserInfo,
-    }
-  }
-
   return {
     userInfo,
-    setAll,
     fetchData,
   }
 })

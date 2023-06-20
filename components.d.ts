@@ -8,15 +8,23 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     App: typeof import('./src/App.vue')['default']
+    Aside: typeof import('./src/components/Aside.vue')['default']
     Avatar: typeof import('./src/components/atoms/Avatar.vue')['default']
+    Divider: typeof import('./src/components/atoms/Divider.vue')['default']
+    Header: typeof import('./src/components/Header.vue')['default']
     HomeView: typeof import('./src/views/HomeView.vue')['default']
     LoginQRCode: typeof import('./src/components/molecules/LoginQRCode.vue')['default']
+    MainLayouts: typeof import('./src/layouts/MainLayouts.vue')['default']
     Popover: typeof import('@headlessui/vue')['Popover']
     PopoverButton: typeof import('@headlessui/vue')['PopoverButton']
     PopoverOverlay: typeof import('@headlessui/vue')['PopoverOverlay']
     PopoverPanel: typeof import('@headlessui/vue')['PopoverPanel']
+    Progress: typeof import('./src/components/atoms/Progress.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ShowQRCode: typeof import('./src/components/atoms/ShowQRCode.vue')['default']
+    UserAvatar: typeof import('./src/components/molecules/UserAvatar.vue')['default']
+    UserInfoBox: typeof import('./src/components/atoms/UserInfoBox.vue')['default']
+    UserMenu: typeof import('./src/components/UserMenu.vue')['default']
   }
 }

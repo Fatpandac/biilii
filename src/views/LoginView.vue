@@ -10,7 +10,6 @@ watch(isLogin, () => {
 
 <template>
   <div class="flex items-center justify-center w-screen h-screen">
-    <img v-if="!isLogin" :src="QRCode">
-    <h1>hello</h1>
+    <ShowQRCode :qr-code="QRCode" />
   </div>
 </template>

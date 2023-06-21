@@ -34,7 +34,7 @@ const router = createRouter({
         {
           path: '/history',
           name: 'Hisrory',
-          component: () => import('@/views/VideosView.vue'),
+          component: () => import('@/views/HistoryVideosView.vue'),
           props: {
             title: 'History',
           },

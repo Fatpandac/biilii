@@ -20,6 +20,7 @@ declare module 'vue' {
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     Header: typeof import('./src/components/Header.vue')['default']
     HistoryIcon: typeof import('./src/components/atoms/icons/HistoryIcon.vue')['default']
+    HistoryVideosView: typeof import('./src/views/HistoryVideosView.vue')['default']
     HomeIcon: typeof import('./src/components/atoms/icons/HomeIcon.vue')['default']
     HomeView: typeof import('./src/views/HomeView.vue')['default']
     LoginQRCode: typeof import('./src/components/molecules/LoginQRCode.vue')['default']
@@ -40,7 +41,9 @@ declare module 'vue' {
     UserAvatar: typeof import('./src/components/molecules/UserAvatar.vue')['default']
     UserInfoBox: typeof import('./src/components/atoms/UserInfoBox.vue')['default']
     UserMenu: typeof import('./src/components/UserMenu.vue')['default']
-    Video: typeof import('./src/components/Video.vue')['default']
+    Video: typeof import('./src/components/molecules/Video.vue')['default']
+    VideoCard: typeof import('./src/components/molecules/VideoCard.vue')['default']
+    VideosBoard: typeof import('./src/components/VideosBoard.vue')['default']
     VideosView: typeof import('./src/views/VideosView.vue')['default']
   }
   export interface ComponentCustomProperties {

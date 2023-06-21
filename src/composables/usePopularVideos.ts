@@ -1,5 +1,4 @@
 import type { Video } from '@/utils/api'
-import { getPopurlarVideos } from '@/utils/getPopularVideos'
 
 export function usePopularVideos() {
   const videos = ref({} as unknown as Video[])

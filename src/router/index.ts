@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { logout } from '@/utils/api'
+import { logout } from '@/utils/logout'
 import HomeViewVue from '@/views/HomeView.vue'
 
 const router = createRouter({

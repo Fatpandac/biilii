@@ -19,12 +19,15 @@ declare module 'vue' {
     PopoverButton: typeof import('@headlessui/vue')['PopoverButton']
     PopoverOverlay: typeof import('@headlessui/vue')['PopoverOverlay']
     PopoverPanel: typeof import('@headlessui/vue')['PopoverPanel']
+    PopularView: typeof import('./src/views/PopularView.vue')['default']
     Progress: typeof import('./src/components/atoms/Progress.vue')['default']
+    RcmdView: typeof import('./src/views/RcmdView.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ShowQRCode: typeof import('./src/components/atoms/ShowQRCode.vue')['default']
     UserAvatar: typeof import('./src/components/molecules/UserAvatar.vue')['default']
     UserInfoBox: typeof import('./src/components/atoms/UserInfoBox.vue')['default']
     UserMenu: typeof import('./src/components/UserMenu.vue')['default']
+    VideosView: typeof import('./src/views/VideosView.vue')['default']
   }
 }

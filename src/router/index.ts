@@ -18,7 +18,7 @@ const router = createRouter({
         {
           path: '/popular',
           name: 'Popular',
-          component: () => import('@/views/VideosView.vue'),
+          component: () => import('@/views/PopularVideosView.vue'),
           props: {
             title: 'Popular',
           },

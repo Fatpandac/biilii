@@ -29,6 +29,7 @@ declare module 'vue' {
     PopoverOverlay: typeof import('@headlessui/vue')['PopoverOverlay']
     PopoverPanel: typeof import('@headlessui/vue')['PopoverPanel']
     PopularIcon: typeof import('./src/components/atoms/icons/PopularIcon.vue')['default']
+    PopularVideosView: typeof import('./src/views/PopularVideosView.vue')['default']
     PopularView: typeof import('./src/views/PopularView.vue')['default']
     Progress: typeof import('./src/components/atoms/Progress.vue')['default']
     RcmdVideosView: typeof import('./src/views/RcmdVideosView.vue')['default']

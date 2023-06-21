@@ -4,7 +4,7 @@ export function useRcmdVideos() {
   const videos = ref({} as unknown as Video[])
 
   async function fetchData() {
-    const res = await getRcmd(0)
+    const res = await getRcmdVideos(VIDEOS_START_IDX)
 
     videos.value = res.data.item.filter(item => item.bvid)
   }
@@ -12,7 +12,7 @@ export function useRcmdVideos() {
   fetchData()
 
   async function load(idx: number) {
-    const res = await getRcmd(idx)
+    const res = await getRcmdVideos(idx)
 
     videos.value = [...videos.value, ...res.data.item.filter(item => item.bvid)]
   }

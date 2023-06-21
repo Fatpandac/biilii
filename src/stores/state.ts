@@ -25,3 +25,5 @@ export const ASIDE_MENU = [
     to: '/history',
   },
 ]
+
+export const VIDEOS_START_IDX = 1

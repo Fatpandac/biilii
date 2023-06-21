@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const idx = ref(VIDEOS_START_IDX)
-const { videos, load } = useRcmdVideos()
+const { videos, load } = usePopularVideos()
 
 function handleload() {
   load(++idx.value)

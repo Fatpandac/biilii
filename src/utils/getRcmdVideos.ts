@@ -6,7 +6,7 @@ interface RcmdVideosResponse extends Omit<BaseResponse, 'data'> {
   }
 }
 
-export async function getRcmd(idx: number) {
+export async function getRcmdVideos(idx: number) {
   const fetch_row = idx * 4
   const fresh_idx_1h = idx
   const fresh_idx = idx

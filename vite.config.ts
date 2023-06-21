@@ -5,7 +5,7 @@ import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
-import { HeadlessUiResolver } from 'unplugin-vue-components/resolvers'
+import { ElementPlusResolver, HeadlessUiResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineConfig({
   plugins: [
@@ -14,12 +14,16 @@ export default defineConfig({
       dts: true,
       resolvers: [
         HeadlessUiResolver(),
+        ElementPlusResolver(),
       ],
       dirs: [
         'src',
       ],
     }),
     AutoImport({
+      resolvers: [
+        ElementPlusResolver(),
+      ],
       imports: [
         'vue',
         'vue-router',

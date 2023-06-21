@@ -5,6 +5,7 @@
 export {}
 declare global {
   const ASIDE_DEFAULT_WIDTH: typeof import('./src/stores/state')['ASIDE_DEFAULT_WIDTH']
+  const ASIDE_MENU: typeof import('./src/stores/state')['ASIDE_MENU']
   const EffectScope: typeof import('vue')['EffectScope']
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']

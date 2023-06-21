@@ -7,7 +7,7 @@
       <Header />
     </template>
     <template #Aside>
-      <div class="h-screen sm:w-30 md:w-60 bg-slate-200" />
+      <Aside />
     </template>
     <template #Main>
       <RouterView />

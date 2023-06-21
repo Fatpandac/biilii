@@ -11,9 +11,36 @@ const router = createRouter({
       component: HomeViewVue,
       children: [
         {
+          path: '/',
+          name: 'Home',
+          component: () => import('@/views/VideosView.vue'),
+          props: {
+            title: 'Home',
+          },
+        },
+        {
           path: '/popular',
           name: 'Popular',
           component: () => import('@/views/VideosView.vue'),
+          props: {
+            title: 'Popular',
+          },
+        },
+        {
+          path: '/dynamic',
+          name: 'Dynamic',
+          component: () => import('@/views/VideosView.vue'),
+          props: {
+            title: 'Dynamic',
+          },
+        },
+        {
+          path: '/history',
+          name: 'Hisrory',
+          component: () => import('@/views/VideosView.vue'),
+          props: {
+            title: 'History',
+          },
         },
       ],
     },

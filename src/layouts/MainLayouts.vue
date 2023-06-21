@@ -3,11 +3,19 @@
 </script>
 
 <template>
-  <div class="relative flex flex-col">
-    <slot name="Header" />
-    <div class="flex w-screen">
-      <slot name="Aside" />
-      <slot name="Main" />
-    </div>
+  <div class="w-screen h-screen">
+    <ElContainer class="h-screen">
+      <ElHeader class="bg-slate-300">
+        <slot name="Header" />
+      </ElHeader>
+      <ElContainer class="h-full">
+        <ElAside class="w-25! md:w-60! transition-all duration-75">
+          <slot name="Aside" />
+        </ElAside>
+        <ElMain>
+          <slot name="Main" />
+        </ElMain>
+      </ElContainer>
+    </ElContainer>
   </div>
 </template>

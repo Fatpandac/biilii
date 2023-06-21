@@ -47,4 +47,6 @@ export const API = {
     `${BASE_API_URL}/x/web-interface/index/top/feed/rcmd?y_num=5&fresh_type=4&feed_version=V9&fetch_row=${fetch_row}&fresh_idx=${fresh_idx}&fresh_idx_1h=${fresh_idx_1h}&brush=${brush}&homepage_ver=1&ps=20`,
   popularVideos: (pn: number, ps: number) => `${BASE_API_URL}/x/web-interface/popular?pn=${pn}&ps=${ps}`,
   historyVideos: (pn: number, ps: number) => `${BASE_API_URL}/x/v2/history?pn=${pn}&ps=${ps}`,
+  dynamicFeedAll: (page: number, timeZone: number) =>
+  `${BASE_API_URL}/x/polymer/web-dynamic/v1/feed/all?timezone_offset=${timeZone}&type=all&page=${page}`,
 }

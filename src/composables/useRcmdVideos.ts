@@ -1,10 +1,10 @@
 import type { Video } from '@/utils/api'
 
 export function useRcmdVideos() {
-  const videos = ref({} as unknown as Video[])
+  const videos = ref([] as unknown as Video[])
 
   async function fetchData() {
-    const res = await getRcmdVideos(VIDEOS_START_IDX)
+    const res = await getRcmdVideos(START_IDX)
 
     videos.value = res.data.item.filter(item => item.bvid)
   }

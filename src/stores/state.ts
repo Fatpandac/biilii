@@ -26,4 +26,4 @@ export const ASIDE_MENU = [
   },
 ]
 
-export const VIDEOS_START_IDX = 1
+export const START_IDX = 1

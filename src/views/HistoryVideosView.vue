@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const idx = ref(VIDEOS_START_IDX)
+const idx = ref(START_IDX)
 const { videos, load } = useHistoryVideos()
 
 function handleload() {

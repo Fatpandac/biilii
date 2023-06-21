@@ -1,10 +1,10 @@
 import type { Video } from '@/utils/api'
 
 export function useHistoryVideos() {
-  const videos = ref({} as unknown as Video[])
+  const videos = ref([] as unknown as Video[])
 
   async function fetchData() {
-    const res = await getHistoryVideos(VIDEOS_START_IDX)
+    const res = await getHistoryVideos(START_IDX)
 
     videos.value = res.data.filter(item => item.bvid)
   }

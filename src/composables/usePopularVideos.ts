@@ -1,10 +1,10 @@
 import type { Video } from '@/utils/api'
 
 export function usePopularVideos() {
-  const videos = ref({} as unknown as Video[])
+  const videos = ref([] as unknown as Video[])
 
   async function fetchData() {
-    const res = await getPopurlarVideos(VIDEOS_START_IDX)
+    const res = await getPopurlarVideos(START_IDX)
 
     videos.value = res.data.list.filter(item => item.bvid)
   }

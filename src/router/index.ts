@@ -26,7 +26,7 @@ const router = createRouter({
         {
           path: '/dynamic',
           name: 'Dynamic',
-          component: () => import('@/views/VideosView.vue'),
+          component: () => import('@/views/DynamicFeedView.vue'),
           props: {
             title: 'Dynamic',
           },

@@ -31,6 +31,7 @@ declare module 'vue' {
     PopularIcon: typeof import('./src/components/atoms/icons/PopularIcon.vue')['default']
     PopularView: typeof import('./src/views/PopularView.vue')['default']
     Progress: typeof import('./src/components/atoms/Progress.vue')['default']
+    RcmdVideosView: typeof import('./src/views/RcmdVideosView.vue')['default']
     RcmdView: typeof import('./src/views/RcmdView.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
@@ -38,6 +39,10 @@ declare module 'vue' {
     UserAvatar: typeof import('./src/components/molecules/UserAvatar.vue')['default']
     UserInfoBox: typeof import('./src/components/atoms/UserInfoBox.vue')['default']
     UserMenu: typeof import('./src/components/UserMenu.vue')['default']
+    Video: typeof import('./src/components/Video.vue')['default']
     VideosView: typeof import('./src/views/VideosView.vue')['default']
+  }
+  export interface ComponentCustomProperties {
+    vInfiniteScroll: typeof import('element-plus/es')['ElInfiniteScroll']
   }
 }

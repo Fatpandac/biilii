@@ -13,10 +13,7 @@ const router = createRouter({
         {
           path: '/',
           name: 'Home',
-          component: () => import('@/views/VideosView.vue'),
-          props: {
-            title: 'Home',
-          },
+          component: () => import('@/views/RcmdVideosView.vue'),
         },
         {
           path: '/popular',

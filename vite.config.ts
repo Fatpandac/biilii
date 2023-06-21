@@ -29,6 +29,11 @@ export default defineConfig({
         'vue-router',
         '@vueuse/core',
         'pinia',
+        {
+          dayjs: [
+            ['default', 'dayjs'],
+          ],
+        },
       ],
       dirs: [
         'src/composables',

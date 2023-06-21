@@ -12,9 +12,9 @@ const isActive = computed(() => route.path === props.to)
 
 <template>
   <RouterLink :to="to" class="text-black decoration-none">
-    <div class="flex flex-col items-center justify-center md:(flex-row) p2 m2 hover:(bg-light bg-opacity-60 rounded-md) active:(bg-light bg-opacity-60 rounded-md)" :class="[{ 'bg-light bg-opacity-60 rounded-md': isActive }]">
+    <div class="flex flex-col items-center justify-center lg:(flex-row) p2 m2 hover:(bg-light bg-opacity-60 rounded-lg) active:(bg-light bg-opacity-60 rounded-lg)" :class="[{ 'bg-light bg-opacity-60 rounded-lg': isActive }]">
       <component :is="icon" class="w-8 h-8" />
-      <span class="w-3/4 overflow-hidden text-sm text-center md:(text-lg text-left pl4) text-nowrap text-ellipsis">{{ title }}</span>
+      <span class="w-3/4 overflow-hidden text-sm text-center lg:(text-lg text-left pl4) text-nowrap text-ellipsis">{{ title }}</span>
     </div>
   </RouterLink>
 </template>

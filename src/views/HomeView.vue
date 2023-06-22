@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <MainLayouts>
+  <MainLayout>
     <template #Header>
       <Header />
     </template>
@@ -12,5 +12,5 @@
     <template #Main>
       <RouterView />
     </template>
-  </MainLayouts>
+  </MainLayout>
 </template>

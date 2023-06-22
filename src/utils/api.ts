@@ -17,6 +17,7 @@ export interface Video {
   id: number
   uri: string
   aid: number
+  cid: number
   bvid: string
   pic: string
   title: string
@@ -26,10 +27,10 @@ export interface Video {
   owner: uploader
   short_link_v2: string
   stat: {
-    danmaku?: number
-    view?: number
-    coin?: number
-    like?: number
+    danmaku: number
+    view: number
+    coin: number
+    like: number
   }
   rcmd_reason: {
     content: string

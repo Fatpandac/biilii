@@ -4,8 +4,8 @@ const route = useRoute()
 const aid = String(route.query.aid)
 const { videoInfo } = useVideoInfo(aid)
 
-const views = computed(() => formatNumber(videoInfo.value.stat.view))
-const danmaku = computed(() => formatNumber(videoInfo.value.stat.danmaku))
+const views = computed(() => formatNumber(videoInfo.value.stat?.view))
+const danmaku = computed(() => formatNumber(videoInfo.value.stat?.danmaku))
 </script>
 
 <template>

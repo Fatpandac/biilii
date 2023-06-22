@@ -80,45 +80,7 @@ export interface DynamicPost {
   type: 'DYNAMIC_TYPE_DRAW' | 'DYNAMIC_TYPE_WORD' | 'DYNAMIC_TYPE_FORWARD'
 }
 
-export interface DynamicMusic {
-  id_str: string
-  modules: {
-    module_author: DynamicModuleAuthor
-    module_dynamic: {
-      major: {
-        music: {
-          cover: string
-          id: number
-          jump_url: string
-          title: string
-        }
-      }
-      desc: {
-        text: string
-      }
-    }
-    module_stat: DynamicModuleStat
-  }
-  type: 'DYNAMIC_TYPE_MUSIC'
-}
-
-export interface DynamicLive {
-  id_str: string
-  modules: {
-    module_author: DynamicModuleAuthor
-    module_dynamic: {
-      major: {
-        live_rcmd: {
-          content: string
-        }
-      }
-    }
-    module_stat: DynamicModuleStat
-  }
-  type: 'DYNAMIC_TYPE_LIVE_RCMD'
-}
-
-export type DynamicItem = DynamicVideo | DynamicPost | DynamicMusic | DynamicLive
+export type DynamicItem = DynamicVideo | DynamicPost
 
 export interface DynamicFeedAllResponse extends Omit<BaseResponse, 'data'> {
   data: {
@@ -126,8 +88,14 @@ export interface DynamicFeedAllResponse extends Omit<BaseResponse, 'data'> {
   }
 }
 
+const SUPPORTED_DYNAMIC_TYPE = ['DYNAMIC_TYPE_DRAW', 'DYNAMIC_TYPE_WORD', 'DYNAMIC_TYPE_FORWARD', 'DYNAMIC_TYPE_AV']
+
 export async function getDynamicFeed(idx: number, offset?: string) {
   const res: DynamicFeedAllResponse = await fetch(API.dynamicFeedAll(idx, -480, offset)).then(res => res.json())
+  const filteredRes = {
+    ...res,
+    'res.data.items': res.data.items.filter(item => SUPPORTED_DYNAMIC_TYPE.includes(item.type)),
+  }
 
-  return res
+  return filteredRes
 }

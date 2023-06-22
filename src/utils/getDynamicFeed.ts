@@ -60,6 +60,15 @@ export interface DynamicPost {
       desc: {
         text: string
       }
+      major: {
+        draw: {
+          items: {
+            height: number
+            width: number
+            src: string
+          }[]
+        }
+      }
     }
     module_stat: DynamicModuleStat
   }
@@ -112,8 +121,8 @@ export interface DynamicFeedAllResponse extends Omit<BaseResponse, 'data'> {
   }
 }
 
-export async function getDynamicFeed(idx: number) {
-  const res: DynamicFeedAllResponse = await fetch(API.dynamicFeedAll(idx, -480)).then(res => res.json())
+export async function getDynamicFeed(idx: number, offset?: string) {
+  const res: DynamicFeedAllResponse = await fetch(API.dynamicFeedAll(idx, -480, offset)).then(res => res.json())
 
   return res
 }

@@ -32,6 +32,7 @@ declare module 'vue' {
     HomeView: typeof import('./src/views/HomeView.vue')['default']
     LoginQRCode: typeof import('./src/components/molecules/LoginQRCode.vue')['default']
     MainLayouts: typeof import('./src/layouts/MainLayouts.vue')['default']
+    PhotoGrid: typeof import('./src/components/atoms/PhotoGrid.vue')['default']
     Popover: typeof import('@headlessui/vue')['Popover']
     PopoverButton: typeof import('@headlessui/vue')['PopoverButton']
     PopoverOverlay: typeof import('@headlessui/vue')['PopoverOverlay']

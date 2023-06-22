@@ -48,6 +48,7 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ShowQRCode: typeof import('./src/components/atoms/ShowQRCode.vue')['default']
+    TextFeild: typeof import('./src/components/atoms/TextFeild.vue')['default']
     UserAvatar: typeof import('./src/components/molecules/UserAvatar.vue')['default']
     UserInfoBox: typeof import('./src/components/atoms/UserInfoBox.vue')['default']
     UserMenu: typeof import('./src/components/UserMenu.vue')['default']

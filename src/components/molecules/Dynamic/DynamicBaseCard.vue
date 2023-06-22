@@ -28,7 +28,7 @@ const like = computed(() => {
 
 <template>
   <div class="w-5/6 shadow-sm rounded-xl bg-slate-50 md:w-3/4 lg:w-3xl m2 p2">
-    <div class="flex items-start justify-start">
+    <div class="flex items-start justify-start w-full">
       <ElImage
         class="w-12 h-12 border-solid rounded-full border-gray-50 border-1 shrink-0"
         lazy
@@ -41,15 +41,15 @@ const like = computed(() => {
       </div>
     </div>
     <div class="flex items-center justify-around w-full mt4">
-      <div class="flex items-center justify-center cursor-pointer hover:(text-blue)" title="">
+      <div class="flex items-center justify-center cursor-pointer hover:(text-blue)">
         <div class="i-solar:multiple-forward-right-outline" />
         <span class="ml2">{{ forward }}</span>
       </div>
-      <div class="flex items-center justify-center cursor-pointer hover:(text-blue)" title="">
+      <div class="flex items-center justify-center cursor-pointer hover:(text-blue)">
         <div class="i-iconamoon:comment-light" />
         <span class="ml2">{{ comment }}</span>
       </div>
-      <div class="flex items-center justify-center cursor-pointer hover:(text-blue)" title="" :class="[{ 'text-blue': state.like.status }]">
+      <div class="flex items-center justify-center cursor-pointer hover:(text-blue)" :class="[{ 'text-blue': state.like.status }]">
         <div class="i-iconamoon:like-light" />
         <span class="ml2">{{ like }}</span>
       </div>

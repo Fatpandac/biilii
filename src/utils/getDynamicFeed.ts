@@ -6,6 +6,7 @@ export interface DynamicModuleAuthor {
   mid: number
   name: string
   pub_ts: number
+  pub_time: string
 }
 
 export interface DynamicModuleStat {
@@ -47,7 +48,11 @@ export interface DynamicVideo {
           type: number
         }
       }
+      desc?: {
+        text: string
+      }
     }
+    module_stat: DynamicModuleStat
   }
   type: 'DYNAMIC_TYPE_AV'
 }

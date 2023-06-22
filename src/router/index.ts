@@ -19,25 +19,16 @@ const router = createRouter({
           path: '/popular',
           name: 'Popular',
           component: () => import('@/views/PopularVideosView.vue'),
-          props: {
-            title: 'Popular',
-          },
         },
         {
           path: '/dynamic',
           name: 'Dynamic',
           component: () => import('@/views/DynamicFeedView.vue'),
-          props: {
-            title: 'Dynamic',
-          },
         },
         {
           path: '/history',
           name: 'Hisrory',
           component: () => import('@/views/HistoryVideosView.vue'),
-          props: {
-            title: 'History',
-          },
         },
       ],
     },

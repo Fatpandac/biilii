@@ -29,11 +29,11 @@ const data = ref(props.data as DynamicVideo)
             <span class="text-sm text-gray-600 break-all text-wrap line-clamp-2 opacity-40 mt2">{{ data.modules.module_dynamic.major.archive.desc }}</span>
             <div class="absolute bottom-0 left-0 flex">
               <div class="flex items-center text-gray-600 opacity-40">
-                <div class="w-5 h-5 i-ic:outline-ondemand-video" />
+                <ViewsIcon class="w-5 h-5" />
                 <span class="ml2">{{ data.modules.module_dynamic.major.archive.stat.play }}</span>
               </div>
               <div class="flex items-center text-gray-600 opacity-40 ml4">
-                <div class="w-5 h-5 i-majesticons:comment-text-line" />
+                <DanmukuIcon class="w-5 h-5" />
                 <span class="ml2">{{ data.modules.module_dynamic.major.archive.stat.danmaku }}</span>
               </div>
             </div>

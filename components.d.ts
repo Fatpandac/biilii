@@ -12,6 +12,7 @@ declare module 'vue' {
     AsideButton: typeof import('./src/components/atoms/AsideButton.vue')['default']
     Avatar: typeof import('./src/components/atoms/Avatar.vue')['default']
     Divider: typeof import('./src/components/atoms/Divider.vue')['default']
+    DynamicBaseCard: typeof import('./src/components/molecules/Dynamic/DynamicBaseCard.vue')['default']
     DynamicCard: typeof import('./src/components/molecules/DynamicCard.vue')['default']
     DynamicFeedView: typeof import('./src/views/DynamicFeedView.vue')['default']
     DynamicIcon: typeof import('./src/components/atoms/icons/DynamicIcon.vue')['default']

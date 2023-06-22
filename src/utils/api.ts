@@ -50,4 +50,5 @@ export const API = {
   historyVideos: (pn: number, ps: number) => `${BASE_API_URL}/x/v2/history?pn=${pn}&ps=${ps}`,
   dynamicFeedAll: (page: number, timeZone: number, offset?: string) =>
   `${BASE_API_URL}/x/polymer/web-dynamic/v1/feed/all?timezone_offset=${timeZone}&type=all&page=${page}${offset ? `&offset=${offset}` : ''}`,
+  videoInfo: (id: string) => `${BASE_API_URL}/x/web-interface/view?aid=${id}`,
 }

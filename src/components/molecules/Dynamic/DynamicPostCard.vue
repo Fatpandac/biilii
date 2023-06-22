@@ -32,7 +32,7 @@ const article = computed(() => data.value.modules.module_dynamic.desc.text.split
   <div class="w-5/6 shadow-sm rounded-xl bg-slate-50 md:w-3/4 lg:w-3xl m2 p2">
     <div class="flex items-start justify-start">
       <img class="w-12 h-12 border-solid rounded-full border-gray-50 border-1" referrerpolicy="no-referrer" :src="data.modules.module_author.face">
-      <div class="flex flex-col items-start justify-center p2 pt0">
+      <div class="flex flex-col items-start justify-center w-full p2 pt0">
         <span class="text-lg text-ellipsis">{{ data.modules.module_author.name }}</span>
         <span class="text-sm text-gray-700 opacity-30 mt1">{{ date }}</span>
         <article class="mt2">

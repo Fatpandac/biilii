@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",
+    "server": "node ./server/index.js",
     "preview": "vite preview",
-    "build-only": "vite build",
+    "build-only": "vite build --outDir ./server/dist",
     "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
@@ -15,8 +16,11 @@
     "@headlessui/vue": "^1.7.14",
     "@vueuse/core": "^10.2.0",
     "@vueuse/integrations": "^10.2.0",
+    "cors": "^2.8.5",
     "dayjs": "^1.11.8",
     "element-plus": "^2.3.7",
+    "express": "^4.18.2",
+    "http-proxy-middleware": "^2.0.6",
     "pinia": "^2.1.3",
     "qrcode": "^1.5.3",
     "universal-cookie": "^4.0.4",

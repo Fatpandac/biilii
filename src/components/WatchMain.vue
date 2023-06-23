@@ -50,6 +50,7 @@ const follower = computed(() => formatNumber(videoOwnerInfoCard.value?.follower)
       </div>
       <ElScrollbar class="xl:(w-2/7 ml2 h-200!) h-70! overflow-hidden">
         <VideoMidCard v-for="video in relatedVideos" :key="video.id" class="border-0" :video="video" />
+        <div class="h-5 SpaceHolder" />
       </ElScrollbar>
     </div>
     <Divider class="hidden xl:(w-full max-w-400 flex)" />

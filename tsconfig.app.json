@@ -8,7 +8,6 @@
   ],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
-    "types": ["element-plus/global"],
     "composite": true,
     "baseUrl": ".",
     "paths": {

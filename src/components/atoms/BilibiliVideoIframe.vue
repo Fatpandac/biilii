@@ -1,13 +1,29 @@
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   aid: string
 }>()
+
+/* See https://github.com/vuejs/vue-router/issues/2403#issuecomment-476737303
+** From: posva
+*/
+const iframe = ref<HTMLIFrameElement>()
+const route = useRoute()
+
+onMounted(() => {
+  iframe.value?.contentWindow?.location.replace(`//player.bilibili.com/player.html?aid=${props.aid}&&high_quality=1`)
+})
+
+watch(route, () => {
+  iframe.value?.contentWindow?.location.replace(`//player.bilibili.com/player.html?aid=${props.aid}&&high_quality=1`)
+})
 </script>
 
 <template>
-  <iframe
-    :src="`//player.bilibili.com/player.html?aid=${aid}&&high_quality=1`" allowfullscreen
-    width="100%" height="100%" scrolling="no" frameborder="0"
-    sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"
-  />
+  <KeepAlive>
+    <iframe
+      ref="iframe"
+      allowfullscreen width="100%" height="100%" scrolling="no" frameborder="0"
+      sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"
+    />
+  </KeepAlive>
 </template>

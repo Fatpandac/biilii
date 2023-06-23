@@ -1,16 +1,17 @@
 <script setup lang="ts">
 const route = useRoute()
 
-const aid = String(route.query.aid)
+const aid = computed(() => String(route.query.aid))
 const { videoInfo } = useVideoInfo(aid)
+const { relatedVideos } = useVideoRelated(aid)
 
 const views = computed(() => formatNumber(videoInfo.value.stat?.view))
 const danmaku = computed(() => formatNumber(videoInfo.value.stat?.danmaku))
 </script>
 
 <template>
-  <div class="flex w-full">
-    <div class="w-3/4">
+  <div class="flex flex-col w-full xl:flex-row">
+    <div class="w-full xl:w-5/7">
       <h1 class="font-400 my3">
         {{ videoInfo.title }}
       </h1>
@@ -28,6 +29,8 @@ const danmaku = computed(() => formatNumber(videoInfo.value.stat?.danmaku))
         <BilibiliVideoIframe :aid="aid" />
       </div>
     </div>
-    <div class="w-1/4 bg-stone-300" />
+    <div class="xl:(w-2/7 ml2)">
+      <VideoMidCard v-for="video in relatedVideos" :key="video.id" class="border-0" :video="video" />
+    </div>
   </div>
 </template>

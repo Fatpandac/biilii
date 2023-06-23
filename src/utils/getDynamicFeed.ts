@@ -22,6 +22,25 @@ export interface DynamicModuleStat {
   }
 }
 
+export interface DynamicVideoInfo {
+  aid: string
+  badge: {
+    bg_color: string
+    text: string
+  }
+  bvid: string
+  cover: string
+  desc: string
+  duration_text: string
+  jump_url: string
+  stat: {
+    danmaku: string
+    play: string
+  }
+  title: string
+  type: number
+}
+
 export interface DynamicVideo {
   id_str: string
   modules: {
@@ -29,24 +48,7 @@ export interface DynamicVideo {
     module_dynamic: {
       type: string
       major: {
-        archive: {
-          aid: string
-          badge: {
-            bg_color: string
-            text: string
-          }
-          bvid: string
-          cover: string
-          desc: string
-          duration_text: string
-          jump_url: string
-          stat: {
-            danmaku: string
-            play: string
-          }
-          title: string
-          type: number
-        }
+        archive: DynamicVideoInfo
       }
       desc?: {
         text: string

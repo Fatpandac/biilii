@@ -52,4 +52,5 @@ export const API = {
   `${BASE_API_URL}/x/polymer/web-dynamic/v1/feed/all?timezone_offset=${timeZone}&type=all&page=${page}${offset ? `&offset=${offset}` : ''}`,
   videoInfo: (id: string) => `${BASE_API_URL}/x/web-interface/view?aid=${id}`,
   videoRelated: (id: string) => `${BASE_API_URL}/x/web-interface/archive/related?aid=${id}`,
+  userInfoCard: (id: string) => `${BASE_API_URL}/x/web-interface/card?mid=${id}`,
 }

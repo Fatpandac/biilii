@@ -3,7 +3,7 @@
     <ElHeader class="bg-slate-300">
       <slot name="Header" />
     </ElHeader>
-    <ElMain>
+    <ElMain class="flex! justify-center">
       <slot name="Main" />
     </ElMain>
     <DarwerAside unvariable />

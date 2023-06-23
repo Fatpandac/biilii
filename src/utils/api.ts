@@ -54,4 +54,5 @@ export const API = {
   videoRelated: (id: string) => `${BASE_API_URL}/x/web-interface/archive/related?aid=${id}`,
   userInfoCard: (id: string) => `${BASE_API_URL}/x/web-interface/card?mid=${id}`,
   reply: (id: string, pn: number) => `${BASE_API_URL}/x/v2/reply?type=1&oid=${id}&sort=1&ps=5&pn=${pn}`,
+  getFollows: (id: string, pn: number) => `${BASE_API_URL}/x/relation/followings?vmid=${id}&pn=${pn}`,
 }

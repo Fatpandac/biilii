@@ -19,3 +19,8 @@ a {
 .el-drawer__body {
   padding: 0px !important;
 }
+
+.my-collapse {
+  --el-fill-color-blank: #0000000;
+  --el-border-color-lighter: #00000000
+}

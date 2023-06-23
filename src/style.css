@@ -24,3 +24,8 @@ a {
   --el-fill-color-blank: #0000000;
   --el-border-color-lighter: #00000000;
 }
+
+em.keyword {
+  color: rgb(242, 94, 143);
+  font-style: normal;
+}

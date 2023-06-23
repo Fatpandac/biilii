@@ -3,6 +3,7 @@ import { logout } from '@/utils/logout'
 import HomeViewVue from '@/views/HomeView.vue'
 import WatchViewVue from '@/views/WatchView.vue'
 import SpaceViewVue from '@/views/SpaceView.vue'
+import SearchViewVue from '@/views/SearchView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -43,6 +44,11 @@ const router = createRouter({
       path: '/space/:mid',
       name: 'Space',
       component: SpaceViewVue,
+    },
+    {
+      path: '/search',
+      name: 'Search',
+      component: SearchViewVue,
     },
     {
       path: '/logout',

@@ -60,6 +60,8 @@ declare module 'vue' {
     RouterView: typeof import('vue-router')['RouterView']
     SearchBar: typeof import('./src/components/molecules/SearchBar.vue')['default']
     SearchIcon: typeof import('./src/components/atoms/icons/SearchIcon.vue')['default']
+    SearchMain: typeof import('./src/components/SearchMain.vue')['default']
+    SearchView: typeof import('./src/views/SearchView.vue')['default']
     ShowQRCode: typeof import('./src/components/atoms/ShowQRCode.vue')['default']
     SpaceMain: typeof import('./src/components/SpaceMain.vue')['default']
     SpaceView: typeof import('./src/views/SpaceView.vue')['default']

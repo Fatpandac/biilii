@@ -1,10 +1,11 @@
 <template>
-  <el-container class="w-screen h-screen overflow-hidden">
-    <el-header class="bg-slate-300">
+  <ElContainer class="w-screen h-screen overflow-hidden">
+    <ElHeader class="bg-slate-300">
       <slot name="Header" />
-    </el-header>
-    <el-main>
+    </ElHeader>
+    <ElMain>
       <slot name="Main" />
-    </el-main>
-  </el-container>
+    </ElMain>
+    <DarwerAside unvariable />
+  </ElContainer>
 </template>

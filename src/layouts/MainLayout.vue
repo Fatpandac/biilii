@@ -1,7 +1,3 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
   <ElContainer class="w-screen h-screen overflow-hidden">
     <ElHeader class="bg-slate-300">
@@ -15,5 +11,6 @@
         <slot name="Main" />
       </ElMain>
     </ElContainer>
+    <DarwerAside />
   </ElContainer>
 </template>

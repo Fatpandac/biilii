@@ -1,7 +1,7 @@
 <template>
   <WatchLayout>
     <template #Header>
-      <Header />
+      <Header show-darwer-button />
     </template>
     <template #Main>
       <WatchMain />

@@ -15,3 +15,7 @@ a {
 .router-link-active {
   text-decoration: none;
 }
+
+.el-drawer__body {
+  padding: 0px !important;
+}

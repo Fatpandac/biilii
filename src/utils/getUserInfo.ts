@@ -1,7 +1,7 @@
 import type { BaseResponse } from './api'
 import type { UserInfo } from '@/stores/user'
 
-interface UserInfoRes extends Omit<BaseResponse, 'daat'> {
+interface UserInfoRes extends Omit<BaseResponse, 'data'> {
   data: UserInfo
 }
 

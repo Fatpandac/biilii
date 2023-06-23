@@ -2,8 +2,9 @@
 const route = useRoute()
 
 const aid = computed(() => String(route.query.aid))
-const { videoInfo } = useVideoInfo(aid)
-const { relatedVideos } = useVideoRelated(aid)
+const { videoInfo } = useVideoInfo(aid.value)
+const { relatedVideos } = useVideoRelated(aid.value)
+const { replies, load, canLoadMore } = useVideoReplay(aid.value)
 
 const videoOwnerID = computed(() => videoInfo.value.owner?.mid)
 
@@ -15,7 +16,7 @@ const follower = computed(() => formatNumber(videoOwnerInfoCard.value?.follower)
 </script>
 
 <template>
-  <div class="">
+  <div class="flex flex-col items-center justify-center">
     <div class="flex flex-col w-full xl:(flex-row) max-w-400 ">
       <div class="w-full xl:(w-5/7)">
         <h1 class="font-400 my3">
@@ -50,6 +51,11 @@ const follower = computed(() => formatNumber(videoOwnerInfoCard.value?.follower)
       <ElScrollbar class="xl:(w-2/7 ml2 h-200!) h-70! overflow-hidden">
         <VideoMidCard v-for="video in relatedVideos" :key="video.id" class="border-0" :video="video" />
       </ElScrollbar>
+    </div>
+    <Divider class="hidden xl:(w-full max-w-400 flex)" />
+    <div class="w-full mt4 xl:max-w-400">
+      <Comment v-for="(reply, index) in replies" :key="index" class="mt4" :reply="reply" />
+      <span v-show="canLoadMore" class="float-right text-orange-400 cursor-pointer select-none" @click="load">Load More Comments</span>
     </div>
   </div>
 </template>

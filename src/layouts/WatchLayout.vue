@@ -1,9 +1,9 @@
 <template>
-  <ElContainer class="w-screen h-screen overflow-hidden">
+  <ElContainer>
     <ElHeader class="bg-slate-300">
       <slot name="Header" />
     </ElHeader>
-    <ElMain class="flex! justify-center">
+    <ElMain>
       <slot name="Main" />
     </ElMain>
     <DarwerAside unvariable />

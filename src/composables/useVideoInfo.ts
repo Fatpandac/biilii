@@ -1,18 +1,13 @@
-import type { Ref } from 'vue'
 import type { Video } from '@/utils/api'
 
-export function useVideoInfo(aid: Ref<string>) {
+export function useVideoInfo(aid: string) {
   const videoInfo = ref({} as unknown as Video)
 
   async function fetchData() {
-    const res = await getVideoInfo(aid.value)
+    const res = await getVideoInfo(aid)
 
     videoInfo.value = res.data
   }
-
-  watch(aid, () => {
-    fetchData()
-  })
 
   fetchData()
 

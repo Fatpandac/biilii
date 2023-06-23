@@ -30,7 +30,7 @@ const { follows, load, canLoadMore } = useFollows(mid)
             :class="[{ 'text-lg! text-left! pl4!': unvariable }]"
           >Subscripts</Span>
         </template>
-        <AsideButton v-for="(follow, index) in follows" :key="index" :to="`${follow.mid}`" :title="follow.uname" :icon="follow.face" :unvariable="unvariable" />
+        <AsideButton v-for="(follow, index) in follows" :key="index" :to="`/space/${follow.mid}`" :title="follow.uname" :icon="follow.face" :unvariable="unvariable" />
         <div v-show="canLoadMore" class="flex justify-center w-full" @click="load">
           <span class="text-orange-400 cursor-pointer select-none">Show More</span>
         </div>

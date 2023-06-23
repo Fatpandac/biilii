@@ -11,6 +11,7 @@ declare global {
   const START_IDX: typeof import('./src/stores/state')['START_IDX']
   const VIDEOS_START_IDX: typeof import('./src/stores/state')['VIDEOS_START_IDX']
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
+  const addVerifyInfo: typeof import('./src/utils/tools')['addVerifyInfo']
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']
   const autoResetRef: typeof import('@vueuse/core')['autoResetRef']
   const checkQRCode: typeof import('./src/utils/checkQRCode')['checkQRCode']

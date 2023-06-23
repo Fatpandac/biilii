@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { logout } from '@/utils/logout'
 import HomeViewVue from '@/views/HomeView.vue'
 import WatchViewVue from '@/views/WatchView.vue'
+import SpaceViewVue from '@/views/SpaceView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -37,6 +38,11 @@ const router = createRouter({
       path: '/watch',
       name: 'Wathc',
       component: WatchViewVue,
+    },
+    {
+      path: '/space/:mid',
+      name: 'Space',
+      component: SpaceViewVue,
     },
     {
       path: '/logout',

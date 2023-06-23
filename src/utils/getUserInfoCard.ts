@@ -1,7 +1,15 @@
 import type { BaseResponse } from './api'
 
+interface Card {
+  face: string
+  sign: string
+  mid: string
+  fans: number
+  name: string
+}
+
 export interface UserInfoCard {
-  card: object
+  card: Card
   follower: number
   like_num: number
 }

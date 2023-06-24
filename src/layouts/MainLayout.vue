@@ -1,6 +1,6 @@
 <template>
   <ElContainer class="w-screen h-screen overflow-hidden">
-    <ElHeader class="bg-slate-300">
+    <ElHeader>
       <slot name="Header" />
     </ElHeader>
     <ElContainer class="h-full">

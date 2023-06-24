@@ -1,7 +1,8 @@
-const path = require('node:path')
-const express = require('express')
-const cors = require('cors')
-const { createProxyMiddleware } = require('http-proxy-middleware')
+import path, { resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import express from 'express'
+import cors from 'cors'
+import { createProxyMiddleware } from 'http-proxy-middleware'
 
 const app = express()
 
@@ -14,13 +15,10 @@ app.use(
       target: 'https://passport.bilibili.com',
       changeOrigin: true,
       pathRewrite: path => path.replace(/^\/passport/, ''),
-      headers: {
-        referer: '',
-        oringin: '',
-      },
       onProxyReq: (proxyReq, _req, _res) => {
         proxyReq.setHeader('referer', '')
         proxyReq.setHeader('origin', '')
+        proxyReq.setHeader('Accept-Encoding', '*/*')
       },
       onProxyRes(proxyRes, req, res) {
         if (proxyRes.headers['set-cookie']) {
@@ -44,6 +42,7 @@ app.use(
       onProxyReq: (proxyReq, _req, _res) => {
         proxyReq.setHeader('referer', '')
         proxyReq.setHeader('origin', '')
+        proxyReq.setHeader('Accept-Encoding', '*/*')
       },
       onProxyRes(proxyRes, req, res) {
         if (proxyRes.headers['set-cookie']) {
@@ -57,6 +56,10 @@ app.use(
     },
   ),
 )
-app.use('/', express.static(path.resolve(__dirname, './dist')))
 
-app.listen(4000)
+const __filename = fileURLToPath(import.meta.url)
+
+const __dirname = path.dirname(__filename)
+app.use('/', express.static(resolve(__dirname, './dist')))
+
+export default app

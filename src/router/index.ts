@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { logout } from '@/utils/logout'
 import HomeViewVue from '@/views/HomeView.vue'
+import NProgress from '@/utils/nprogress'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -60,6 +61,17 @@ const router = createRouter({
       },
     },
   ],
+})
+
+router.beforeEach((_to, _from, next) => {
+  NProgress.start()
+
+  next()
+})
+router.afterEach(() => {
+  window.scrollTo(0, 0)
+
+  NProgress.done()
 })
 
 export default router

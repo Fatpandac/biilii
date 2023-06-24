@@ -78,6 +78,7 @@ declare global {
   const markRaw: typeof import('vue')['markRaw']
   const navStore: typeof import('./src/stores/state')['navStore']
   const nextTick: typeof import('vue')['nextTick']
+  const nprogress: typeof import('./src/utils/nprogress')['default']
   const onActivated: typeof import('vue')['onActivated']
   const onBeforeMount: typeof import('vue')['onBeforeMount']
   const onBeforeRouteLeave: typeof import('vue-router')['onBeforeRouteLeave']

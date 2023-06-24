@@ -7,14 +7,14 @@ const props = defineProps<{
 ** From: posva
 */
 const iframe = ref<HTMLIFrameElement>()
-const route = useRoute()
+const aid = computed(() => props.aid)
 
 onMounted(() => {
   iframe.value?.contentWindow?.location.replace(`//player.bilibili.com/player.html?aid=${props.aid}&&high_quality=1`)
 })
 
-watch(route, () => {
-  iframe.value?.contentWindow?.location.replace(`//player.bilibili.com/player.html?aid=${props.aid}&&high_quality=1`)
+watch(aid, () => {
+  iframe.value?.contentWindow?.location.replace(`//player.bilibili.com/player.html?aid=${aid.value}&&high_quality=1`)
 })
 </script>
 

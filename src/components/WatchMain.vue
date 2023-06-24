@@ -2,9 +2,9 @@
 const route = useRoute()
 
 const aid = computed(() => String(route.query.aid))
-const { videoInfo } = useVideoInfo(aid.value)
-const { relatedVideos } = useVideoRelated(aid.value)
-const { replies, load, canLoadMore } = useVideoReplay(aid.value)
+const { videoInfo } = useVideoInfo(aid)
+const { relatedVideos } = useVideoRelated(aid)
+const { replies, load, canLoadMore } = useVideoReplay(aid)
 
 const videoOwnerID = computed(() => videoInfo.value.owner?.mid)
 
@@ -36,7 +36,10 @@ const follower = computed(() => formatNumber(videoOwnerInfoCard.value?.follower)
           <BilibiliVideoIframe :aid="aid" />
         </div>
         <div class="flex w-full my2">
-          <ElImage class="w-12 h-12 rounded-full" :src="videoInfo.owner?.face" />
+          <ElImage
+            class="w-12 h-12 rounded-full" :src="videoInfo.owner?.face"
+            referrerpolicy="no-referrer"
+          />
           <div class="flex flex-col ml4">
             <span class="text-lg">{{ videoInfo.owner?.name }}</span>
             <span class="text-sm text-gray-600 opacity-40">{{ follower }} subscribers</span>

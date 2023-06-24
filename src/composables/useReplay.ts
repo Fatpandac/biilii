@@ -1,20 +1,26 @@
+import type { Ref } from 'vue'
 import type { Reply } from './../utils/getReply'
 
-export function useVideoReplay(aid: string) {
+export function useVideoReplay(aid: Ref<string>) {
   const idx = ref(START_IDX)
   const canLoadMore = ref(true)
   const replies = ref([] as unknown as Reply[])
 
   async function fetchData() {
-    const res = await getReply(aid, idx.value)
+    if (!aid.value)
+      return
+
+    const res = await getReply(aid.value, idx.value)
 
     replies.value = res.data.replies
   }
 
   fetchData()
 
+  watch(aid, fetchData)
+
   async function load() {
-    const res = await getReply(aid, ++idx.value)
+    const res = await getReply(aid.value, ++idx.value)
 
     if (res.data.replies.length === 0)
       canLoadMore.value = false

@@ -1,16 +1,21 @@
+import type { Ref } from 'vue'
 import type { Video } from '@/utils/api'
-import { getVideoRelate } from '@/utils/getVideoRelated'
 
-export function useVideoRelated(aid: string) {
+export function useVideoRelated(aid: Ref<string>) {
   const relatedVideos = ref([] as unknown as Video[])
 
   async function fetchData() {
-    const res = await getVideoRelate(aid)
+    if (!aid.value)
+      return
+
+    const res = await getVideoRelate(aid.value)
 
     relatedVideos.value = res.data
   }
 
   fetchData()
+
+  watch(aid, fetchData)
 
   return {
     relatedVideos,

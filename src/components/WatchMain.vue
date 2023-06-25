@@ -8,7 +8,7 @@ const route = useRoute()
 const aid = computed(() => String(route.query.aid))
 const { data: videoInfo } = useDataWithAid<Video, string>(aid, getVideoInfo)
 const { data: relatedVideos } = useDataWithAid<Video[], string>(aid, getVideoRelate)
-const { data: replies, loadmore } = useDataLoadmore<Reply>(getReply, false, aid)
+const { data: replies, loadmore, isLoading } = useDataLoadmore<Reply>(getReply, false, aid)
 
 const videoOwnerID = computed(() => videoInfo.value?.owner.mid)
 
@@ -63,6 +63,9 @@ const follower = computed(() => formatNumber(videoOwnerInfoCard.value?.follower)
     <Divider class="hidden xl:(w-full max-w-400 flex)" />
     <div v-infinite-scroll="loadmore" infinite-scroll-immediate class="w-full mt4 xl:max-w-400">
       <Comments v-for="(reply, index) in replies" :key="index" class="mt4" :reply="reply" />
+      <div v-show="isLoading" class="w-full text-center">
+        <span class="text-xl text-orange-400 animate-flash animate-count-infinte">Loading...</span>
+      </div>
     </div>
   </div>
 </template>

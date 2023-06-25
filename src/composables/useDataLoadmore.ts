@@ -6,6 +6,7 @@ interface UseDataLoadmoreReturn<T> {
   data: Ref<T>
   loadmore: () => void
   canLoadmore: Ref<boolean>
+  isLoading: Ref<boolean>
 }
 
 interface FetchResponse<T> extends Omit<BaseResponse, 'data'> {
@@ -28,6 +29,7 @@ export function useDataLoadmore<T>(fetchFunc: FetchFunc<T> | FetchFuncWithOffset
   const data = ref<T[]>([]) as Ref<T[]>
   const canLoadmore = ref(true)
   const offset = computed(() => (data.value[(data.value.length) - 1] as DynamicItem)?.id_str)
+  const isLoading = ref(false)
 
   const func = (idx: number) => (withOffset
     ? (fetchFunc as FetchFuncWithOffset<T>)(idx, offset.value)
@@ -36,9 +38,11 @@ export function useDataLoadmore<T>(fetchFunc: FetchFunc<T> | FetchFuncWithOffset
       : (fetchFunc as FetchFunc<T>)(idx))
 
   async function fetchData() {
+    isLoading.value = true
     const res = await func(idx.value)
 
     data.value = res.data
+    isLoading.value = false
   }
 
   fetchData()
@@ -48,6 +52,7 @@ export function useDataLoadmore<T>(fetchFunc: FetchFunc<T> | FetchFuncWithOffset
   async function loadmore() {
     let res
 
+    isLoading.value = true
     if (canLoadmore.value)
       res = await func(++idx.value)
     else return
@@ -57,11 +62,13 @@ export function useDataLoadmore<T>(fetchFunc: FetchFunc<T> | FetchFuncWithOffset
 
     if (res.data)
       data.value = [...data.value as T[], ...res.data]
+    isLoading.value = false
   }
 
   return {
     data,
     loadmore,
     canLoadmore,
+    isLoading,
   }
 }

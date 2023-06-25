@@ -37,8 +37,13 @@ function loadmore(idx: number) {
 <template>
   <Comment :uname="reply.member.uname" :message="reply.content.message" :avatar="reply.member.avatar">
     <Comment v-for="(item, index) in replies" :key="index" class="my4" :uname="item.member.uname" :message="item.content.message" :avatar="item.member.avatar" />
-    <div class="w-full">
-      <span v-show="!showPagination && showLoadMore" class="float-right text-base text-orange-400 cursor-pointer select-none" :class="[{ 'animate-flash animate-count-infinte': isLoading }]" @click="loadmore(1)">{{ isLoading ? 'Loading...' : 'Load More Comments' }}</span>
+    <div v-if="reply.reply_control.sub_reply_entry_text && reply.reply_control.sub_reply_entry_text.match(/\d+/)?.map(Number)[0]! > 3" class="w-full">
+      <span
+        v-show="!showPagination && showLoadMore"
+        class="float-left text-base text-orange-400 cursor-pointer select-none"
+        :class="[{ 'animate-flash animate-count-infinte': isLoading }]"
+        @click="loadmore(1)"
+      >{{ isLoading ? 'Loading...' : `${reply.reply_control.sub_reply_entry_text}，点击查看` }}</span>
       <el-pagination v-show="showPagination" layout="prev, pager, next" :total="totalComments" :default-page-size="10" @current-change="loadmore" />
     </div>
   </Comment>

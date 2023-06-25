@@ -25,7 +25,6 @@ declare module 'vue' {
     DynamicPostCard: typeof import('./src/components/molecules/Dynamic/DynamicPostCard.vue')['default']
     DynamicVideoCard: typeof import('./src/components/molecules/Dynamic/DynamicVideoCard.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
-    ElBacktop: typeof import('element-plus/es')['ElBacktop']
     ElCollapse: typeof import('element-plus/es')['ElCollapse']
     ElCollapseItem: typeof import('element-plus/es')['ElCollapseItem']
     ElContainer: typeof import('element-plus/es')['ElContainer']

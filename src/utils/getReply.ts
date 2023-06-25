@@ -10,6 +10,12 @@ export interface ReplyContent {
   message: string
 }
 
+export interface ReplyControl {
+  sub_reply_entry_text: string
+  sub_reply_title_text: string
+  time_desc: string
+}
+
 export interface Reply {
   rpid: number
   oid: number
@@ -18,6 +24,7 @@ export interface Reply {
   member: ReplyMember
   content: ReplyContent
   replies: Reply[]
+  reply_control: ReplyControl
 }
 
 interface ReplyData {

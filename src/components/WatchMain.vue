@@ -8,7 +8,7 @@ const route = useRoute()
 const aid = computed(() => String(route.query.aid))
 const { data: videoInfo } = useDataWithAid<Video, string>(aid, getVideoInfo)
 const { data: relatedVideos } = useDataWithAid<Video[], string>(aid, getVideoRelate)
-const { data: replies, loadmore, canLoadmore } = useDataLoadmore<Reply>(getReply, false, aid)
+const { data: replies, loadmore } = useDataLoadmore<Reply>(getReply, false, aid)
 
 const videoOwnerID = computed(() => videoInfo.value?.owner.mid)
 
@@ -20,7 +20,7 @@ const follower = computed(() => formatNumber(videoOwnerInfoCard.value?.follower)
 </script>
 
 <template>
-  <div class="flex flex-col items-center justify-center">
+  <div class="flex flex-col items-center h-screen">
     <div class="flex flex-col w-full xl:(flex-row) max-w-400 ">
       <div class="w-full xl:(w-5/7)">
         <h1 class="font-400 my3">
@@ -61,9 +61,8 @@ const follower = computed(() => formatNumber(videoOwnerInfoCard.value?.follower)
       </ElScrollbar>
     </div>
     <Divider class="hidden xl:(w-full max-w-400 flex)" />
-    <div class="w-full mt4 xl:max-w-400">
-      <Comment v-for="(reply, index) in replies" :key="index" class="mt4" :reply="reply" />
-      <span v-show="canLoadmore" class="float-right text-orange-400 cursor-pointer select-none" @click="loadmore">Load More Comments</span>
+    <div v-infinite-scroll="loadmore" infinite-scroll-immediate class="w-full mt4 xl:max-w-400">
+      <Comments v-for="(reply, index) in replies" :key="index" class="mt4" :reply="reply" />
     </div>
   </div>
 </template>

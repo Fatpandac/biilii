@@ -2,7 +2,7 @@ import type { BaseResponse } from './api'
 
 export interface ReplyMember {
   mid: number
-  uname: number
+  uname: string
   avatar: string
 }
 
@@ -42,4 +42,10 @@ export async function getReply(idx: number, aid: string) {
   }
 
   return newRes
+}
+
+export async function getReplyReply(idx: number, aid: string, root: string) {
+  const res: ReplyRes = await fetch(API.replyReply(aid, root, idx)).then(res => res.json())
+
+  return res
 }

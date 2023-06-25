@@ -55,6 +55,7 @@ declare global {
   const getRcmd: typeof import('./src/utils/getRcmd')['getRcmd']
   const getRcmdVideos: typeof import('./src/utils/getRcmdVideos')['getRcmdVideos']
   const getReply: typeof import('./src/utils/getReply')['getReply']
+  const getReplyReply: typeof import('./src/utils/getReply')['getReplyReply']
   const getSearch: typeof import('./src/utils/getSearch')['getSearch']
   const getUserInfo: typeof import('./src/utils/getUserInfo')['getUserInfo']
   const getUserInfoCard: typeof import('./src/utils/getUserInfoCard')['getUserInfoCard']

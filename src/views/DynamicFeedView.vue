@@ -1,15 +1,12 @@
 <script setup lang="ts">
-const idx = ref(START_IDX)
-const { dynamicItems, load } = useDynamicFeed()
+import type { DynamicItem } from '@/utils/getDynamicFeed'
 
-function callback() {
-  load(++idx.value)
-}
+const { data: dynamicItems, loadmore } = useDataLoadmore<DynamicItem>(getDynamicFeed, true)
 </script>
 
 <template>
   <div
-    v-infinite-scroll="callback" infinite-scroll-distance="300" infinite-scroll-delay="500"
+    v-infinite-scroll="loadmore" infinite-scroll-distance="300" infinite-scroll-delay="500"
     infinite-scroll-immediate="false"
     class="flex flex-col items-center justify-center p2"
   >

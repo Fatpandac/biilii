@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { Follow } from '@/utils/getFollows'
 import { ASIDE_MENU } from '@/stores/state'
 
 withDefaults(
@@ -13,7 +14,7 @@ const activeNames = ref('')
 const { userInfo } = storeToRefs(userStore())
 const mid = computed(() => String(userInfo.value.mid))
 
-const { follows, load, canLoadMore } = useFollows(mid)
+const { data: follows, loadmore, canLoadmore } = useDataLoadmore<Follow>(getFollows, false, mid)
 </script>
 
 <template>
@@ -31,7 +32,7 @@ const { follows, load, canLoadMore } = useFollows(mid)
           >Subscripts</Span>
         </template>
         <AsideButton v-for="(follow, index) in follows" :key="index" :to="`/space/${follow.mid}`" :title="follow.uname" :icon="follow.face" :unvariable="unvariable" />
-        <div v-show="canLoadMore" class="flex justify-center w-full" @click="load">
+        <div v-show="canLoadmore" class="flex justify-center w-full" @click="loadmore">
           <span class="text-orange-400 cursor-pointer select-none">Show More</span>
         </div>
       </ElCollapseItem>

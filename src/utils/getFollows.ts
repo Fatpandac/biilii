@@ -15,8 +15,13 @@ interface UserFollowRes extends Omit<BaseResponse, 'data'> {
   }
 }
 
-export async function getFollows(id: string, idx: number) {
+export async function getFollows(idx: number, id: string) {
   const res: UserFollowRes = await fetch(API.getFollows(id, idx)).then(res => res.json())
 
-  return res
+  const newRes = {
+    ...res,
+    data: res.data?.list || [],
+  }
+
+  return newRes
 }

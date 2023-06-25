@@ -96,7 +96,7 @@ export async function getDynamicFeed(idx: number, offset?: string) {
   const res: DynamicFeedAllResponse = await fetch(API.dynamicFeedAll(idx, -480, offset)).then(res => res.json())
   const filteredRes = {
     ...res,
-    'res.data.items': res.data.items.filter(item => SUPPORTED_DYNAMIC_TYPE.includes(item.type)),
+    data: res.data.items.filter(item => SUPPORTED_DYNAMIC_TYPE.includes(item.type)),
   }
 
   return filteredRes

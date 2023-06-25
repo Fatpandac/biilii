@@ -1,7 +1,11 @@
 <script setup lang="ts">
-const { videos, load } = useRcmdVideos()
+import type { Video } from '@/utils/api'
+
+const { data, loadmore } = useDataLoadmore<Video>(getRcmdVideos)
+
+const videos = computed(() => data.value.filter(item => item.bvid))
 </script>
 
 <template>
-  <VideosBoard :callback="load" :videos="videos" />
+  <VideosBoard :callback="loadmore" :videos="videos" />
 </template>

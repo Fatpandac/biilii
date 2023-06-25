@@ -1,12 +1,9 @@
 <script setup lang="ts">
-const idx = ref(START_IDX)
-const { videos, load } = useHistoryVideos()
+import type { Video } from '@/utils/api'
 
-function handleload() {
-  load(++idx.value)
-}
+const { data: videos, loadmore } = useDataLoadmore<Video>(getHistoryVideos)
 </script>
 
 <template>
-  <VideosBoard :callback="handleload" :videos="videos" />
+  <VideosBoard :callback="loadmore" :videos="videos" />
 </template>

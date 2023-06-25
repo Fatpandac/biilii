@@ -34,8 +34,12 @@ interface ReplyRes extends Omit<BaseResponse, 'data'> {
   data: ReplyData
 }
 
-export async function getReply(aid: string, pn: number) {
-  const res: ReplyRes = await fetch(API.reply(aid, pn)).then(res => res.json())
+export async function getReply(idx: number, aid: string) {
+  const res: ReplyRes = await fetch(API.reply(aid, idx)).then(res => res.json())
+  const newRes = {
+    ...res,
+    data: res.data?.replies || [],
+  }
 
-  return res
+  return newRes
 }

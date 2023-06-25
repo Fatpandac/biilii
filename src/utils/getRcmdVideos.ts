@@ -13,6 +13,10 @@ export async function getRcmdVideos(idx: number) {
   const brush = idx
 
   const res: RcmdVideosResponse = await fetch(API.rcmdVideos(fresh_idx_1h, fetch_row, fresh_idx, brush)).then(res => res.json())
+  const newRes = {
+    ...res,
+    data: res.data.item,
+  }
 
-  return res
+  return newRes
 }

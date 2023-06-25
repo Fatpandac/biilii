@@ -1,17 +1,21 @@
 <script setup lang="ts">
+import type { Video } from '@/utils/api'
+import type { Reply } from '@/utils/getReply'
+import type { UserInfoCard } from '@/utils/getUserInfoCard'
+
 const route = useRoute()
 
 const aid = computed(() => String(route.query.aid))
-const { videoInfo } = useVideoInfo(aid)
-const { relatedVideos } = useVideoRelated(aid)
-const { replies, load, canLoadMore } = useVideoReplay(aid)
+const { data: videoInfo } = useDataWithAid<Video, string>(aid, getVideoInfo)
+const { data: relatedVideos } = useDataWithAid<Video[], string>(aid, getVideoRelate)
+const { data: replies, loadmore, canLoadmore } = useDataLoadmore<Reply>(getReply, false, aid)
 
-const videoOwnerID = computed(() => videoInfo.value.owner?.mid)
+const videoOwnerID = computed(() => videoInfo.value?.owner.mid)
 
-const { userInfoCard: videoOwnerInfoCard } = useUserInfoCard(videoOwnerID)
+const { data: videoOwnerInfoCard } = useDataWithAid<UserInfoCard, number | undefined>(videoOwnerID, getUserInfoCard)
 
-const views = computed(() => formatNumber(videoInfo.value.stat?.view))
-const danmaku = computed(() => formatNumber(videoInfo.value.stat?.danmaku))
+const views = computed(() => formatNumber(videoInfo.value?.stat.view))
+const danmaku = computed(() => formatNumber(videoInfo.value?.stat?.danmaku))
 const follower = computed(() => formatNumber(videoOwnerInfoCard.value?.follower))
 </script>
 
@@ -20,7 +24,7 @@ const follower = computed(() => formatNumber(videoOwnerInfoCard.value?.follower)
     <div class="flex flex-col w-full xl:(flex-row) max-w-400 ">
       <div class="w-full xl:(w-5/7)">
         <h1 class="font-400 my3">
-          {{ videoInfo.title }}
+          {{ videoInfo?.title }}
         </h1>
         <div class="flex flex-row my2">
           <div class="flex items-center text-gray-600 opacity-40">
@@ -37,17 +41,17 @@ const follower = computed(() => formatNumber(videoOwnerInfoCard.value?.follower)
         </div>
         <div class="flex w-full my2">
           <ElImage
-            class="w-12 h-12 rounded-full" :src="videoInfo.owner?.face"
+            class="w-12 h-12 rounded-full" :src="videoInfo?.owner.face"
             referrerpolicy="no-referrer"
           />
           <div class="flex flex-col ml4">
-            <span class="text-lg">{{ videoInfo.owner?.name }}</span>
+            <span class="text-lg">{{ videoInfo?.owner.name }}</span>
             <span class="text-sm text-gray-600 opacity-40">{{ follower }} subscribers</span>
           </div>
         </div>
         <div class="w-full my2">
           <TextFeild class="text-gray-600 opacity-40">
-            {{ videoInfo.desc }}
+            {{ videoInfo?.desc }}
           </TextFeild>
         </div>
       </div>
@@ -59,7 +63,7 @@ const follower = computed(() => formatNumber(videoOwnerInfoCard.value?.follower)
     <Divider class="hidden xl:(w-full max-w-400 flex)" />
     <div class="w-full mt4 xl:max-w-400">
       <Comment v-for="(reply, index) in replies" :key="index" class="mt4" :reply="reply" />
-      <span v-show="canLoadMore" class="float-right text-orange-400 cursor-pointer select-none" @click="load">Load More Comments</span>
+      <span v-show="canLoadmore" class="float-right text-orange-400 cursor-pointer select-none" @click="loadmore">Load More Comments</span>
     </div>
   </div>
 </template>

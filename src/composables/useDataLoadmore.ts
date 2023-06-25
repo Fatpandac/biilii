@@ -53,9 +53,13 @@ export function useDataLoadmore<T>(fetchFunc: FetchFunc<T> | FetchFuncWithOffset
     let res
 
     isLoading.value = true
-    if (canLoadmore.value)
+    if (canLoadmore.value) {
       res = await func(++idx.value)
-    else return
+    }
+    else {
+      isLoading.value = false
+      return
+    }
 
     if (res.data?.length === 0 || !res.data)
       canLoadmore.value = false

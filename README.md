@@ -2,4 +2,4 @@
 
 A fake bilibili website just for practice.
 
-![interface](metadata/SCR-20230624-mvxo.png)
+![interface](metadata/SCR-20230625-tuqm.png)

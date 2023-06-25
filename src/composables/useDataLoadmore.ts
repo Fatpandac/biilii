@@ -29,14 +29,14 @@ export function useDataLoadmore<T>(fetchFunc: FetchFunc<T> | FetchFuncWithOffset
   const canLoadmore = ref(true)
   const offset = computed(() => (data.value[(data.value.length) - 1] as DynamicItem)?.id_str)
 
-  const func = () => (withOffset
-    ? (fetchFunc as FetchFuncWithOffset<T>)(idx.value++, offset.value)
+  const func = (idx: number) => (withOffset
+    ? (fetchFunc as FetchFuncWithOffset<T>)(idx, offset.value)
     : id
-      ? (fetchFunc as FetchFuncWithId<T>)(idx.value++, id.value)
-      : (fetchFunc as FetchFunc<T>)(idx.value++))
+      ? (fetchFunc as FetchFuncWithId<T>)(idx, id.value)
+      : (fetchFunc as FetchFunc<T>)(idx))
 
   async function fetchData() {
-    const res = await func()
+    const res = await func(idx.value)
 
     data.value = res.data
   }
@@ -49,7 +49,7 @@ export function useDataLoadmore<T>(fetchFunc: FetchFunc<T> | FetchFuncWithOffset
     let res
 
     if (canLoadmore.value)
-      res = await func()
+      res = await func(++idx.value)
     else return
 
     if (res.data?.length === 0 || !res.data)

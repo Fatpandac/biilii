@@ -9,7 +9,7 @@ defineProps<{
 
 <template>
   <div
-    v-infinite-scroll="callback" infinite-scroll-distance="300" infinite-scroll-delay="500"
+    v-infinite-scroll="callback" infinite-scroll-distance="300"
     infinite-scroll-immediate="false"
     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pb16"
   >

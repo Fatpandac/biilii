@@ -4,6 +4,8 @@ const router = useRouter()
 const input = ref(route.query.keyword || '')
 
 function search() {
+  if (!input.value)
+    return
   router.push({
     path: '/search',
     query: {
@@ -14,8 +16,8 @@ function search() {
 </script>
 
 <template>
-  <div class="border-black rounded-full w-60 md:w-80 h-3/5 border-1">
-    <ElInput v-model="input" class="w-full h-full rounded-full" clearable @change="search">
+  <div class="border-black w-60 md:w-90 h-3/5 border-1 header-search">
+    <ElInput v-model="input" class="w-full h-full" clearable @change="search">
       <template #append>
         <SearchIcon class="w-6 h-6" />
       </template>

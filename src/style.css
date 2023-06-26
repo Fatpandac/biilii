@@ -34,3 +34,13 @@ em.keyword {
 #nprogress .bar {
   background: red !important;
 }
+
+.header-search .el-input__wrapper {
+  border-top-left-radius: 99999px;
+  border-bottom-left-radius: 99999px;
+}
+
+.header-search .el-input-group__append {
+  border-top-right-radius: 99999px;
+  border-bottom-right-radius: 99999px;
+}

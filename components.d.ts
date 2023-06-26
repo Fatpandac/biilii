@@ -41,6 +41,7 @@ declare module 'vue' {
     HistoryVideosView: typeof import('./src/views/HistoryVideosView.vue')['default']
     HomeIcon: typeof import('./src/components/atoms/icons/HomeIcon.vue')['default']
     HomeView: typeof import('./src/views/HomeView.vue')['default']
+    InfiniteScroll: typeof import('./src/components/atoms/InfiniteScroll.vue')['default']
     LoginQRCode: typeof import('./src/components/molecules/LoginQRCode.vue')['default']
     MainLayout: typeof import('./src/layouts/MainLayout.vue')['default']
     PhotoGrid: typeof import('./src/components/atoms/PhotoGrid.vue')['default']

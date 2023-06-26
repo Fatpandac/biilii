@@ -5,11 +5,10 @@ const { data: dynamicItems, loadmore } = useDataLoadmore<DynamicItem>(getDynamic
 </script>
 
 <template>
-  <div
-    v-infinite-scroll="loadmore" infinite-scroll-distance="300" infinite-scroll-delay="500"
-    infinite-scroll-immediate="false"
+  <InfiniteScroll
     class="flex flex-col items-center justify-center p2"
+    @load="loadmore"
   >
     <DynamicCard v-for="item in dynamicItems" :key="item.id_str" :dynamic="item" />
-  </div>
+  </InfiniteScroll>
 </template>

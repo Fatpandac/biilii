@@ -61,7 +61,7 @@ const follower = computed(() => formatNumber(videoOwnerInfoCard.value?.follower)
       </ElScrollbar>
     </div>
     <Divider class="hidden xl:(w-full max-w-400 flex)" />
-    <div v-infinite-scroll="loadmore" infinite-scroll-immediate class="w-full mt4 xl:max-w-400">
+    <div v-infinite-scroll="loadmore" :infinite-scroll-immediate="false" class="w-full mt4 xl:max-w-400">
       <Comments v-for="(reply, index) in replies" :key="index" class="mt4" :reply="reply" />
       <div v-show="isLoading" class="w-full text-center">
         <span class="text-xl text-orange-400 animate-flash animate-count-infinte">Loading...</span>

@@ -12,7 +12,7 @@ declare module 'vue' {
     AsideButton: typeof import('./src/components/atoms/AsideButton.vue')['default']
     Avatar: typeof import('./src/components/atoms/Avatar.vue')['default']
     BilibiliVideoIframe: typeof import('./src/components/atoms/BilibiliVideoIframe.vue')['default']
-    Comment: typeof import('./src/components/molecules/Comment.vue')['default']
+    Comment: typeof import('./src/components/atoms/Comment.vue')['default']
     Comments: typeof import('./src/components/molecules/Comments.vue')['default']
     DanmukuIcon: typeof import('./src/components/atoms/icons/DanmukuIcon.vue')['default']
     DarwerAside: typeof import('./src/components/DarwerAside.vue')['default']

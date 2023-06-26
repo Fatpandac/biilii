@@ -40,7 +40,7 @@ function loadmore(idx: number) {
     <div v-if="reply.reply_control.sub_reply_entry_text && reply.reply_control.sub_reply_entry_text.match(/\d+/)?.map(Number)[0]! > 3" class="w-full">
       <span
         v-show="!showPagination && showLoadMore"
-        class="float-left text-base text-orange-400 cursor-pointer select-none"
+        class="float-left text-sm text-orange-400 cursor-pointer select-none"
         :class="[{ 'animate-flash animate-count-infinte': isLoading }]"
         @click="loadmore(1)"
       >{{ isLoading ? 'Loading...' : `${reply.reply_control.sub_reply_entry_text}，点击查看` }}</span>

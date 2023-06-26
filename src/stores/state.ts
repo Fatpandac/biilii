@@ -31,8 +31,9 @@ export const START_IDX = 1
 export const navStore = defineStore('nav', () => {
   const DEFAULT_CLOSE = false
 
-  const showDarwer = ref(DEFAULT_CLOSE)
   const router = useRouter()
+  const showDarwer = ref(DEFAULT_CLOSE)
+  const activeAsideCollapseName = ref([])
 
   // reset showDarwer before change route
   router.afterEach(() => {
@@ -41,5 +42,6 @@ export const navStore = defineStore('nav', () => {
 
   return {
     showDarwer,
+    activeAsideCollapseName,
   }
 })

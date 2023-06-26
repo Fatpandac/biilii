@@ -10,8 +10,8 @@ withDefaults(
     unvariable: false,
   },
 )
-const activeNames = ref('')
 const { userInfo } = storeToRefs(userStore())
+const { activeAsideCollapseName } = storeToRefs(navStore())
 const mid = computed(() => String(userInfo.value.mid))
 
 const { data: follows, loadmore, canLoadmore } = useDataLoadmore<Follow>(getFollows, false, mid)
@@ -23,7 +23,7 @@ const { data: follows, loadmore, canLoadmore } = useDataLoadmore<Follow>(getFoll
       <AsideButton :to="item.to" :icon="item.icon" :title="item.title" :unvariable="unvariable" />
     </template>
     <Divider class="mx2" />
-    <ElCollapse v-model="activeNames" class="bg-slate-200 my-collapse">
+    <ElCollapse v-model="activeAsideCollapseName" class="bg-slate-200 my-collapse">
       <ElCollapseItem name="1" class="bg-slate-200!">
         <template #title>
           <span
@@ -32,7 +32,7 @@ const { data: follows, loadmore, canLoadmore } = useDataLoadmore<Follow>(getFoll
           >Subscripts</Span>
         </template>
         <AsideButton v-for="(follow, index) in follows" :key="index" :to="`/space/${follow.mid}`" :title="follow.uname" :icon="follow.face" :unvariable="unvariable" />
-        <div v-show="canLoadmore" class="flex justify-center w-full" @click="loadmore">
+        <div v-show="canLoadmore && follows.length" class="flex justify-center w-full" @click="loadmore">
           <span class="text-orange-400 cursor-pointer select-none">Show More</span>
         </div>
       </ElCollapseItem>

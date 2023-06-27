@@ -7,9 +7,10 @@ const props = defineProps<{
   view: number
   pubdate: number
   pic: string
-  ownerFace: string
   title: string
   ownerName: string
+  ownerId: number
+  ownerFace?: string
 }>()
 
 dayjs.extend(relativeTime)
@@ -24,7 +25,9 @@ const date = computed(() => dayjs(props.pubdate * 1000).fromNow())
       <ElImage :src="pic" class="object-cover w-full transition-all duration-75 aspect-video rounded-xl hover:rounded-none" lazy referrerpolicy="no-referrer" />
     </RouterLink>
     <div class="flex flex-row justify-start w-full py2">
-      <ElImage :src="ownerFace" class="w-10 h-10 border-gray-200 border-solid rounded-full shrink-0 border-1" lazy referrerpolicy="no-referrer" />
+      <RouterLink v-if="ownerFace" :to="`/space/${ownerId}`">
+        <ElImage :src="ownerFace" class="w-10 h-10 border-gray-200 border-solid rounded-full shrink-0 border-1" lazy referrerpolicy="no-referrer" />
+      </RouterLink>
       <div class="flex flex-col justify-start w-full pl2">
         <RouterLink :to="`/watch?aid=${id}`">
           <span class="text-md line-clamp-2 hover:(text-blue) transition-all duration-75" v-html="title " />

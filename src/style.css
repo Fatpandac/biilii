@@ -42,6 +42,7 @@ em.keyword {
 }
 
 .header-search .el-input-group__append {
+  cursor: pointer;
   border-top-right-radius: 99999px;
   border-bottom-right-radius: 99999px;
 }

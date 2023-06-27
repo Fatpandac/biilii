@@ -19,8 +19,8 @@ function handleLoad() {
     <VideoCard
       v-for="video in searchVideoRes" :id="video.aid"
       :key="video.id" :view="video.play" :pubdate="video.pubdate"
-      :pic="video.pic" :owner-face="video.pic" :owner-name="video.author"
-      :title="video.title"
+      :pic="video.pic" :owner-name="video.author"
+      :owner-id="video.mid" :title="video.title"
     />
   </infinitescroll>
 </template>

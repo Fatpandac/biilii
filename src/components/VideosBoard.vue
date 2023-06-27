@@ -16,7 +16,7 @@ defineProps<{
       v-for="video in videos" :id="video.id ?? video.aid"
       :key="video.id ?? video.aid" :view="video.stat.view" :pubdate="video.pubdate"
       :pic="video.pic" :owner-face="video.owner.face" :owner-name="video.owner.name"
-      :title="video.title"
+      :owner-id="video.owner.mid" :title="video.title"
     />
   </InfiniteScroll>
 </template>

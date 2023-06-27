@@ -48,12 +48,16 @@ useInfiniteScroll(
           <BilibiliVideoIframe :aid="aid" />
         </div>
         <div class="flex w-full my2">
-          <ElImage
-            class="w-12 h-12 rounded-full" :src="videoInfo?.owner.face"
-            referrerpolicy="no-referrer"
-          />
+          <RouterLink :to="`/space/${videoOwnerID}`">
+            <ElImage
+              class="w-12 h-12 rounded-full hover:(cursor-pointer)" :src="videoInfo?.owner.face"
+              referrerpolicy="no-referrer"
+            />
+          </RouterLink>
           <div class="flex flex-col ml4">
-            <span class="text-lg">{{ videoInfo?.owner.name }}</span>
+            <RouterLink :to="`/space/${videoOwnerID}`">
+              <span class="text-lg hover:(cursor-pointer)">{{ videoInfo?.owner.name }}</span>
+            </RouterLink>
             <span class="text-sm text-gray-600 opacity-40">{{ follower }} subscribers</span>
           </div>
         </div>

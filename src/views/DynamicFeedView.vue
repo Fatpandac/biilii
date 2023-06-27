@@ -5,6 +5,7 @@ const { data: dynamicItems, loadmore } = useDataLoadmore<DynamicItem>(getDynamic
 </script>
 
 <template>
+  <ElEmpty v-if="!dynamicItems.length" description="Please login before continuing" class="h-90vh" />
   <InfiniteScroll
     class="flex flex-col items-center justify-center p2"
     @load="loadmore"

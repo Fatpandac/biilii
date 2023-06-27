@@ -11,6 +11,7 @@ function handleLoad() {
 </script>
 
 <template>
+  <ElEmpty v-if="!searchVideoRes.length" description="Please login before continuing" class="h-90vh" />
   <InfiniteScroll
     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pb16 h-90vh"
     @load="handleLoad"

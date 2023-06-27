@@ -1,10 +1,13 @@
 <script setup lang="ts">
+import type { Video } from '@/utils/api'
 import type { UserInfoCard } from '@/utils/getUserInfoCard'
 
 const route = useRoute()
 const mid = computed(() => Number.parseInt(`${route.params.mid}`))
 const { data: userInfoCard } = useDataWithAid<UserInfoCard, number>(mid, getUserInfoCard)
-const { videos, load } = useRcmdVideos()
+
+const { data: rcmdVideos, loadmore } = useDataLoadmore<Video>(getRcmdVideos)
+const videos = computed(() => rcmdVideos.value.filter(item => item.bvid))
 </script>
 
 <template>
@@ -18,6 +21,6 @@ const { videos, load } = useRcmdVideos()
     </div>
     <Divider class="w-full max-w-300" />
     <!-- Cannot get user video from space because anti-crawler so use Rcmd Video replace it -->
-    <VideosBoard class="h-90vh max-w-300" :callback="load" :videos="videos" />
+    <VideosBoard class="h-90vh max-w-300" :callback="loadmore" :videos="videos" />
   </div>
 </template>

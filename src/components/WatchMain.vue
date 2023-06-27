@@ -17,10 +17,18 @@ const { data: videoOwnerInfoCard } = useDataWithAid<UserInfoCard, number | undef
 const views = computed(() => formatNumber(videoInfo.value?.stat.view))
 const danmaku = computed(() => formatNumber(videoInfo.value?.stat?.danmaku))
 const follower = computed(() => formatNumber(videoOwnerInfoCard.value?.follower))
+
+useInfiniteScroll(
+  window,
+  loadmore,
+  {
+    distance: 300,
+  },
+)
 </script>
 
 <template>
-  <div class="flex flex-col items-center h-screen">
+  <div class="flex flex-col items-center">
     <div class="flex flex-col w-full xl:(flex-row) max-w-400 ">
       <div class="w-full xl:(w-5/7)">
         <h1 class="font-400 my3">

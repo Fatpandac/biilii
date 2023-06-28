@@ -39,10 +39,14 @@ export function useDataLoadmore<T>(fetchFunc: FetchFunc<T> | FetchFuncWithOffset
 
   async function fetchData() {
     isLoading.value = true
-    const res = await func(idx.value)
+    try {
+      const res = await func(idx.value)
 
-    data.value = res.data
-    isLoading.value = false
+      data.value = res.data || []
+    }
+    finally {
+      isLoading.value = false
+    }
   }
 
   fetchData()
@@ -54,7 +58,12 @@ export function useDataLoadmore<T>(fetchFunc: FetchFunc<T> | FetchFuncWithOffset
 
     isLoading.value = true
     if (canLoadmore.value) {
-      res = await func(++idx.value)
+      try {
+        res = await func(++idx.value)
+      }
+      finally {
+        isLoading.value = false
+      }
     }
     else {
       isLoading.value = false

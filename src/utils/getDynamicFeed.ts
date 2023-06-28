@@ -94,6 +94,14 @@ const SUPPORTED_DYNAMIC_TYPE = ['DYNAMIC_TYPE_DRAW', 'DYNAMIC_TYPE_WORD', 'DYNAM
 
 export async function getDynamicFeed(idx: number, offset?: string) {
   const res: DynamicFeedAllResponse = await fetch(API.dynamicFeedAll(idx, -480, offset)).then(res => res.json())
+
+  if (res.code === -101) {
+    return {
+      ...res,
+      data: [],
+    }
+  }
+
   const filteredRes = {
     ...res,
     data: res.data.items.filter(item => SUPPORTED_DYNAMIC_TYPE.includes(item.type)),

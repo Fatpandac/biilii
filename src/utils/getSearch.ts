@@ -21,8 +21,12 @@ interface SearchRes extends Omit<BaseResponse, 'data'> {
   }
 }
 
-export async function getSearch(keyword: string, pn: number) {
+export async function getSearch(pn: number, keyword: string) {
   const res: SearchRes = await fetch(API.search(keyword, pn)).then(res => res.json())
+  const newRes = {
+    ...res,
+    data: res.data.result,
+  }
 
-  return res
+  return newRes
 }

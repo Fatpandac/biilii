@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import type { DynamicItem } from '@/utils/getDynamicFeed'
 
-const { data: dynamicItems, loadmore } = useDataLoadmore<DynamicItem>(getDynamicFeed, true)
+const { data: dynamicItems, loadmore, isLoading } = useDataLoadmore<DynamicItem>(getDynamicFeed, true)
 </script>
 
 <template>
-  <ElEmpty v-if="!dynamicItems.length" description="Please login before continuing" class="h-90vh" />
+  <MyEmpty :data="dynamicItems" :is-loading="isLoading" />
   <InfiniteScroll
     class="flex flex-col items-center justify-center p2"
     @load="loadmore"

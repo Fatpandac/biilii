@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import type { Video } from '@/utils/api'
 
-const { data: videos, loadmore } = useDataLoadmore<Video>(getHistoryVideos)
+const { data: videos, loadmore, isLoading } = useDataLoadmore<Video>(getHistoryVideos)
 </script>
 
 <template>
-  <ElEmpty v-if="!videos.length" description="Please login before continuing" class="h-90vh" />
+  <MyEmpty :data="videos" :is-loading="isLoading" />
   <VideosBoard :callback="loadmore" :videos="videos" />
 </template>

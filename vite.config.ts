@@ -3,9 +3,10 @@ import { URL, fileURLToPath } from 'node:url'
 import vue from '@vitejs/plugin-vue'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import { defineConfig } from 'vite'
 import { ElementPlusResolver, HeadlessUiResolver } from 'unplugin-vue-components/resolvers'
+import Components from 'unplugin-vue-components/vite'
+import type { HttpProxy, ProxyOptions } from 'vite'
+import { defineConfig } from 'vite'
 
 export default defineConfig({
   plugins: [
@@ -51,40 +52,40 @@ export default defineConfig({
         target: 'https://passport.bilibili.com',
         changeOrigin: true,
         rewrite: path => path.replace(/^\/passport/, ''),
-        configure: (proxy, options) => {
-          options.headers = {
-            referer: '',
-            oringin: '',
-          }
-
-          proxy.on('proxyRes', (proxyRes, _req, _res) => {
-            proxyRes.headers['set-cookie']
-              = proxyRes.headers['set-cookie']
-                ?.map(cookie =>
-                  cookie.replace(/Domain=.*?bilibili.com;/, '')
-                    .replace('HttpOnly; Secure', ''))
-          })
-        },
+        configure,
       },
       '/api': {
         target: 'https://api.bilibili.com',
         changeOrigin: true,
         rewrite: path => path.replace(/^\/api/, ''),
-        configure: (proxy, options) => {
-          options.headers = {
-            referer: '',
-            oringin: '',
-          }
-
-          proxy.on('proxyRes', (proxyRes, _req, _res) => {
-            proxyRes.headers['set-cookie']
-              = proxyRes.headers['set-cookie']
-                ?.map(cookie =>
-                  cookie.replace(/Domain=.*?bilibili.com;/, '')
-                    .replace('HttpOnly; Secure', ''))
-          })
-        },
+        configure,
+      },
+      '/biilii': {
+        target: 'https://www.bilibili.com',
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/biilii/, ''),
+        configure: (proxy, options) => configure(proxy, options, 'path=/api/x/web-interface/search;'),
       },
     },
   },
 })
+
+function configure(proxy: HttpProxy.Server, options: ProxyOptions, pathReplace?: string) {
+  options.headers = {
+    referer: '',
+    oringin: '',
+  }
+
+  proxy.on('proxyRes', (proxyRes, _req, _res) => {
+    proxyRes.headers['set-cookie']
+              = proxyRes.headers['set-cookie']
+        ?.map((cookie) => {
+          cookie = cookie.replace(/[D|d]omain=.*?bilibili.com(;)*/, '')
+            .replace('HttpOnly; Secure', '')
+          if (pathReplace)
+            cookie = cookie.replace('path=/;', pathReplace)
+
+          return cookie
+        })
+  })
+}

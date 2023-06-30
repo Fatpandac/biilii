@@ -6,7 +6,7 @@ defineProps<{
 </script>
 
 <template>
-  <ElEmpty v-if="!data.length" v-loading="isLoading" v description="Please login before continuing" class="h-90vh">
+  <ElEmpty v-if="!data.length" v-loading="isLoading" class="h-90vh">
     <template v-if="isLoading" #image>
       <div />
     </template>

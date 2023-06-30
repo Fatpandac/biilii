@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { type NavigationGuardNext, type RouteLocationNormalized, createRouter, createWebHistory } from 'vue-router'
 import { logout } from '@/utils/logout'
 import HomeViewVue from '@/views/HomeView.vue'
 import NProgress from '@/utils/nprogress'
@@ -25,11 +25,17 @@ const router = createRouter({
           path: '/dynamic',
           name: 'Dynamic',
           component: () => import('@/views/DynamicFeedView.vue'),
+          beforeEnter: (_from, to, next) => {
+            handleUnLogin(to, next)
+          },
         },
         {
           path: '/history',
           name: 'Hisrory',
           component: () => import('@/views/HistoryVideosView.vue'),
+          beforeEnter: (_from, to, next) => {
+            handleUnLogin(to, next)
+          },
         },
       ],
     },
@@ -62,6 +68,22 @@ const router = createRouter({
     },
   ],
 })
+
+function handleUnLogin(to: RouteLocationNormalized, next: NavigationGuardNext) {
+  const { userInfo } = storeToRefs(userStore())
+  if (userInfo.value.isLogin) {
+    next()
+  }
+  else {
+    ElMessage({
+      message: 'Please login before continuing',
+      grouping: true,
+      type: 'warning',
+      showClose: true,
+    })
+    next(to.path)
+  }
+}
 
 router.beforeEach((_to, _from, next) => {
   NProgress.start()

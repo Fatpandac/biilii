@@ -56,6 +56,34 @@ app.use(
     },
   ),
 )
+app.use(
+  createProxyMiddleware(
+    '/biilii',
+    {
+      target: 'https://www.bilibili.com',
+      changeOrigin: true,
+      pathRewrite: path => path.replace(/^\/biilii/, ''),
+      onProxyReq: (proxyReq, _req, _res) => {
+        proxyReq.setHeader('referer', '')
+        proxyReq.setHeader('origin', '')
+        proxyReq.setHeader('Accept-Encoding', '*/*')
+      },
+      onProxyRes(proxyRes, req, res) {
+        if (proxyRes.headers['set-cookie']) {
+          proxyRes.headers['set-cookie'] = proxyRes.headers['set-cookie'].map((cookie) => {
+            cookie = cookie.replace(/[D|d]omain=.*?bilibili.com(;)*/, '')
+              .replace('HttpOnly; Secure', '')
+            cookie = cookie.replace('path=/;', 'path=/api/x/web-interface/search;')
+
+            return cookie
+          })
+
+          res.setHeader('set-cookie', proxyRes.headers['set-cookie'])
+        }
+      },
+    },
+  ),
+)
 
 const __filename = fileURLToPath(import.meta.url)
 

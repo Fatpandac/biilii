@@ -6,7 +6,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="hover:(bg-opacity-30 bg-white rounded-md) p2 aspect-square flex flex-col justify-center select-none">
+  <div class="flex flex-col justify-center select-none p2 aspect-square">
     <span>{{ title }}</span>
     <span>{{ data }}</span>
   </div>

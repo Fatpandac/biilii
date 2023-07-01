@@ -24,7 +24,7 @@ function routeGoWithClose(path: string) {
 </script>
 
 <template>
-  <div class="flex flex-col rounded-md w-60 bg-slate-200 p4">
+  <div class="flex flex-col bg-white border-gray-100 border-solid rounded-md border-1 w-60 p4">
     <span class="font-sans text-2xl">{{ userInfo.uname }}</span>
     <span class="font-sans text-sm text-gray-400">mid: {{ userInfo.mid }}</span>
     <Divider class="my-4" />
@@ -41,7 +41,7 @@ function routeGoWithClose(path: string) {
       <span>LV{{ userInfo.level_info.current_level + 1 }}</span>
     </div>
     <Divider class="my-4" />
-    <div class="flex flex-row items-center justify-start text-black rounded-md p2 cursor-pointer active:(bg-light bg-opacity-30)" @click="routeGoWithClose('/logout')">
+    <div class="flex flex-row items-center justify-start text-black rounded-md p2 cursor-pointer hover:(bg-light bg-opacity-70) active:(bg-light bg-opacity-70)" @click="routeGoWithClose('/logout')">
       <div class="w-5 h-5 i-lucide:log-out" />
       <span class="float-right ml-2">Logout</span>
     </div>

@@ -3,6 +3,10 @@ import { useCookies } from '@vueuse/integrations/useCookies'
 import { logout } from '@/utils/logout'
 import HomeViewVue from '@/views/HomeView.vue'
 import NProgress from '@/utils/nprogress'
+import RcmdVideosView from '@/views/RcmdVideosView.vue'
+import PopularVideosView from '@/views/PopularVideosView.vue'
+import DynamicFeedView from '@/views/DynamicFeedView.vue'
+import HistoryVideosView from '@/views/HistoryVideosView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,17 +19,17 @@ const router = createRouter({
         {
           path: '/',
           name: 'Home',
-          component: () => import('@/views/RcmdVideosView.vue'),
+          component: RcmdVideosView,
         },
         {
           path: '/popular',
           name: 'Popular',
-          component: () => import('@/views/PopularVideosView.vue'),
+          component: PopularVideosView,
         },
         {
           path: '/dynamic',
           name: 'Dynamic',
-          component: () => import('@/views/DynamicFeedView.vue'),
+          component: DynamicFeedView,
           beforeEnter: (_from, to, next) => {
             handleUnLogin(to, next)
           },
@@ -33,7 +37,7 @@ const router = createRouter({
         {
           path: '/history',
           name: 'Hisrory',
-          component: () => import('@/views/HistoryVideosView.vue'),
+          component: HistoryVideosView,
           beforeEnter: (_from, to, next) => {
             handleUnLogin(to, next)
           },

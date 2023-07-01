@@ -1,4 +1,5 @@
 import { type NavigationGuardNext, type RouteLocationNormalized, createRouter, createWebHistory } from 'vue-router'
+import { useCookies } from '@vueuse/integrations/useCookies'
 import { logout } from '@/utils/logout'
 import HomeViewVue from '@/views/HomeView.vue'
 import NProgress from '@/utils/nprogress'
@@ -70,8 +71,10 @@ const router = createRouter({
 })
 
 function handleUnLogin(to: RouteLocationNormalized, next: NavigationGuardNext) {
-  const { userInfo } = storeToRefs(userStore())
-  if (userInfo.value.isLogin) {
+  const cookie = useCookies()
+  const isLogin = cookie.get('bili_jct') !== undefined
+
+  if (isLogin) {
     next()
   }
   else {

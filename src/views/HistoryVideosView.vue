@@ -6,5 +6,5 @@ const { data: videos, loadmore, isLoading } = useDataLoadmore<Video>(getHistoryV
 
 <template>
   <MyEmpty :data="videos" :is-loading="isLoading" />
-  <VideosBoard :callback="loadmore" :videos="videos" />
+  <TimelineBoard :callback="loadmore" :videos="videos" />
 </template>

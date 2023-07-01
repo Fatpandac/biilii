@@ -47,6 +47,7 @@ export const userStore = defineStore('user', () => {
       }
     }
     else {
+      // reset all data of user
       userInfo.value = DEFAULT
     }
   }

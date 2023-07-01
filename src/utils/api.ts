@@ -36,6 +36,7 @@ export interface Video {
     content: string
   }
   short_link: string
+  view_at: number
 }
 
 export const API = {

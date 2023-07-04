@@ -29,6 +29,7 @@
     "qrcode": "^1.5.3",
     "universal-cookie": "^4.0.4",
     "vue": "^3.3.4",
+    "vue-gtag": "^2.0.1",
     "vue-router": "^4.2.2"
   },
   "devDependencies": {

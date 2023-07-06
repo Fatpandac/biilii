@@ -26,7 +26,7 @@ const isString = typeof props.icon === 'string'
       <component :is="icon" v-if="!isString" class="w-8 h-8" />
       <ElImage v-else :src="icon" referrerpolicy="no-referrer" class="w-8 h-8 rounded-full" />
       <span
-        class="w-3/4 overflow-hidden text-sm text-center lg:(text-lg text-left pl4) text-nowrap text-ellipsis"
+        class="w-3/4 overflow-hidden text-sm text-center lg:(text-lg text-left pl4 block) text-nowrap whitespace-nowrap text-ellipsis"
         :class="[{ 'text-lg! text-left! pl4!': unvariable }]"
       >{{ title }}</span>
     </div>

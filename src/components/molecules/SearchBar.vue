@@ -1,7 +1,12 @@
 <script setup lang="ts">
 const route = useRoute()
 const router = useRouter()
+const keyword = computed(() => route.query.keyword || '')
 const input = ref(route.query.keyword || '')
+
+watch(keyword, () => {
+  input.value = keyword.value
+})
 
 function search() {
   if (!input.value)

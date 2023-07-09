@@ -19,6 +19,7 @@
     "@vercel/node": "^2.15.2",
     "@vueuse/core": "^10.2.0",
     "@vueuse/integrations": "^10.2.0",
+    "connect-history-api-fallback": "^2.0.0",
     "cors": "^2.8.5",
     "dayjs": "^1.11.8",
     "element-plus": "^2.3.7",

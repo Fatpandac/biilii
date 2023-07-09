@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url'
 import express from 'express'
 import cors from 'cors'
 import { createProxyMiddleware } from 'http-proxy-middleware'
+import historyApiFallback from 'connect-history-api-fallback'
 
 const app = express()
 
@@ -88,6 +89,7 @@ app.use(
 const __filename = fileURLToPath(import.meta.url)
 
 const __dirname = path.dirname(__filename)
-app.use('/', express.static(resolve(__dirname, './dist')))
+app.use(historyApiFallback())
+app.use(express.static(resolve(__dirname, './dist')))
 
 export default app

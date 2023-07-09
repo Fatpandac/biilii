@@ -6,6 +6,11 @@
       "use": "@vercel/node"
     },
     {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "/server/dist" }
+    },
+    {
       "src": "/server/dist/**",
       "use": "@vercel/static"
     }

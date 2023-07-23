@@ -66,6 +66,7 @@ declare module 'vue' {
     ShowQRCode: typeof import('./src/components/atoms/ShowQRCode.vue')['default']
     SpaceMain: typeof import('./src/components/SpaceMain.vue')['default']
     SpaceView: typeof import('./src/views/SpaceView.vue')['default']
+    TestVideo: typeof import('./src/views/TestVideo.vue')['default']
     TextFeild: typeof import('./src/components/atoms/TextFeild.vue')['default']
     TimelineBoard: typeof import('./src/components/TimelineBoard.vue')['default']
     UserAvatar: typeof import('./src/components/molecules/UserAvatar.vue')['default']

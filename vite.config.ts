@@ -66,19 +66,31 @@ export default defineConfig({
         rewrite: path => path.replace(/^\/biilii/, ''),
         configure: (proxy, options) => configure(proxy, options, 'path=/api/x/web-interface/search;'),
       },
+      '/bilivideo': {
+        target: 'https://placehold.com', // This is placehold
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/bilivideo\/.*?\//, ''),
+        configure,
+      },
     },
   },
 })
 
 function configure(proxy: HttpProxy.Server, options: ProxyOptions, pathReplace?: string) {
   options.headers = {
-    referer: '',
+    referer: 'https://www.bilibili.com',
     oringin: '',
   }
-
-  proxy.on('proxyRes', (proxyRes, _req, _res) => {
+  proxy.on('proxyReq', (proxyReq) => {
+    if (proxyReq.path.includes('/bilivideo')) {
+      const target = proxyReq.path.match(/\/bilivideo\/(.*?)\//)![1]
+      if (target)
+        options.target = `https://${target}/`
+    }
+  })
+  proxy.on('proxyRes', (proxyRes) => {
     proxyRes.headers['set-cookie']
-              = proxyRes.headers['set-cookie']
+      = proxyRes.headers['set-cookie']
         ?.map((cookie) => {
           cookie = cookie.replace(/[D|d]omain=.*?bilibili.com(;)*/, '')
             .replace('HttpOnly; Secure', '')

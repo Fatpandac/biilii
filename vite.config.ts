@@ -67,7 +67,7 @@ export default defineConfig({
         configure: (proxy, options) => configure(proxy, options, 'path=/api/x/web-interface/search;'),
       },
       '/bilivideo': {
-        target: 'https://placehold.com', // This is placehold
+        target: 'https://cn-sxxa-cm-01-04.bilivideo.com',
         changeOrigin: true,
         rewrite: path => path.replace(/^\/bilivideo\/.*?\//, ''),
         configure,

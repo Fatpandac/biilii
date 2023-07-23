@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.14",
+    "@nplayer/vue": "^1.0.12",
     "@vercel/node": "^2.15.2",
     "@vueuse/core": "^10.2.0",
     "@vueuse/integrations": "^10.2.0",
@@ -25,6 +26,7 @@
     "element-plus": "^2.3.7",
     "express": "^4.18.2",
     "http-proxy-middleware": "^2.0.6",
+    "nplayer": "^1.0.15",
     "nprogress": "^0.2.0",
     "pinia": "^2.1.3",
     "qrcode": "^1.5.3",

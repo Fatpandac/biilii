@@ -45,7 +45,7 @@ useInfiniteScroll(
           </div>
         </div>
         <div class="w-full aspect-video">
-          <BilibiliVideoIframe :aid="aid" />
+          <BiiliiVideo :aid="aid" />
         </div>
         <div class="flex w-full my2">
           <RouterLink :to="`/space/${videoOwnerID}`">

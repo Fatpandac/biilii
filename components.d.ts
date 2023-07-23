@@ -11,6 +11,7 @@ declare module 'vue' {
     Aside: typeof import('./src/components/Aside.vue')['default']
     AsideButton: typeof import('./src/components/atoms/AsideButton.vue')['default']
     Avatar: typeof import('./src/components/atoms/Avatar.vue')['default']
+    BiiliiVideo: typeof import('./src/components/atoms/BiiliiVideo.vue')['default']
     BilibiliVideoIframe: typeof import('./src/components/atoms/BilibiliVideoIframe.vue')['default']
     Comment: typeof import('./src/components/atoms/Comment.vue')['default']
     Comments: typeof import('./src/components/molecules/Comments.vue')['default']

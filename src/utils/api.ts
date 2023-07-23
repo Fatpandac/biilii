@@ -50,7 +50,7 @@ export const API = {
   popularVideos: (pn: number, ps: number) => `${BASE_API_URL}/x/web-interface/popular?pn=${pn}&ps=${ps}`,
   historyVideos: (pn: number, ps: number) => `${BASE_API_URL}/x/v2/history?pn=${pn}&ps=${ps}`,
   dynamicFeedAll: (page: number, timeZone: number, offset?: string) =>
-  `${BASE_API_URL}/x/polymer/web-dynamic/v1/feed/all?timezone_offset=${timeZone}&type=all&page=${page}${offset ? `&offset=${offset}` : ''}`,
+    `${BASE_API_URL}/x/polymer/web-dynamic/v1/feed/all?timezone_offset=${timeZone}&type=all&page=${page}${offset ? `&offset=${offset}` : ''}`,
   videoInfo: (id: string) => `${BASE_API_URL}/x/web-interface/view?aid=${id}`,
   videoRelated: (id: string) => `${BASE_API_URL}/x/web-interface/archive/related?aid=${id}`,
   userInfoCard: (id: string) => `${BASE_API_URL}/x/web-interface/card?mid=${id}`,
@@ -58,4 +58,5 @@ export const API = {
   replyReply: (id: string, root: string, pn: number) => `${BASE_API_URL}/x/v2/reply/reply?type=1&oid=${id}&root=${root}&pn=${pn}&ps=10`,
   getFollows: (id: string, pn: number) => `${BASE_API_URL}/x/relation/followings?vmid=${id}&pn=${pn}`,
   search: (keyword: string, pn: number) => `${BASE_API_URL}/x/web-interface/search/type?search_type=video&keyword=${keyword}&page=${pn}`,
+  getPlayUrl: (avid: string, cid: string) => `${BASE_API_URL}/x/player/playurl?avid=${avid}&cid=${cid}&qn=112&fnval=0&fnver=0&fourk=1`,
 }

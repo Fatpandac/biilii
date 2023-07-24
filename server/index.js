@@ -86,6 +86,25 @@ app.use(
   ),
 )
 
+app.use(
+  createProxyMiddleware(
+    '/bilivideo',
+    {
+      target: 'https://cn-sxxa-cm-01-04.bilivideo.com',
+      changeOrigin: true,
+      pathRewrite: path => path.replace(/^\/bilivideo\/.*?\//, ''),
+      router: (req) => {
+        const target = req.path.match(/\/bilivideo\/(.*?)\//)[1]
+        return `https://${target}/`
+      },
+      headers: {
+        referer: 'https://www.bilibili.com',
+        origin: '',
+      },
+    },
+  ),
+)
+
 const __filename = fileURLToPath(import.meta.url)
 
 const __dirname = path.dirname(__filename)

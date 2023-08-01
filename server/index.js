@@ -111,4 +111,4 @@ const __dirname = path.dirname(__filename)
 app.use(historyApiFallback())
 app.use(express.static(resolve(__dirname, './dist')))
 
-export default app
+app.listen(8080)

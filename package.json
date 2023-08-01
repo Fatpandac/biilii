@@ -7,7 +7,6 @@
     "dev": "vite",
     "build": "run-p type-check build-only",
     "server": "node ./server/index.js",
-    "server-dev": "vercel dev",
     "preview": "vite preview",
     "build-only": "vite build --outDir ./server/dist",
     "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
@@ -17,7 +16,6 @@
   "dependencies": {
     "@headlessui/vue": "^1.7.14",
     "@nplayer/vue": "^1.0.12",
-    "@vercel/node": "^2.15.2",
     "@vueuse/core": "^10.2.0",
     "@vueuse/integrations": "^10.2.0",
     "connect-history-api-fallback": "^2.0.0",

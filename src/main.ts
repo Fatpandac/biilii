@@ -14,6 +14,6 @@ const pinia = createPinia()
 
 app.use(pinia).use(router).use(NPlayer).use(VueGtag, {
   config: { id: 'G-7DWSQ58M55' },
-})
+}, router)
 
 app.mount('#app')

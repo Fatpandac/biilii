@@ -18,8 +18,11 @@ const router = createRouter({
       children: [
         {
           path: '/',
-          name: 'Home',
+          name: 'HomeRcmd',
           component: RcmdVideosView,
+          meta: {
+            keepAlive: true,
+          },
         },
         {
           path: '/popular',
@@ -97,7 +100,7 @@ router.beforeEach((_to, _from, next) => {
 
   next()
 })
-router.afterEach(() => {
+router.afterEach((_to, _from) => {
   window.scrollTo(0, 0)
 
   NProgress.done()

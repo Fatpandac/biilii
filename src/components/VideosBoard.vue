@@ -1,16 +1,23 @@
 <script setup lang="ts">
 import type { Video } from '@/utils/api'
 
-defineProps<{
+const props = defineProps<{
   callback: () => void
   videos: Video[]
 }>()
+
+useInfiniteScroll(
+  window,
+  props.callback,
+  {
+    distance: 300,
+  },
+)
 </script>
 
 <template>
-  <InfiniteScroll
+  <div
     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pb16"
-    @load="callback"
   >
     <VideoCard
       v-for="video in videos" :id="video.id ?? video.aid"
@@ -18,5 +25,5 @@ defineProps<{
       :pic="video.pic" :owner-face="video.owner.face" :owner-name="video.owner.name"
       :owner-id="video.owner.mid" :title="video.title"
     />
-  </InfiniteScroll>
+  </div>
 </template>

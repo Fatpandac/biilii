@@ -4,8 +4,16 @@
 onMounted(() => {
   fetch('/biilii')
 })
+
+const route = useRoute()
+const isKeepAlive = computed(() => route.meta.keepAlive)
 </script>
 
 <template>
-  <RouterView />
+  <RouterView v-slot="{ Component }">
+    <KeepAlive>
+      <component :is="Component" v-if="isKeepAlive" />
+    </KeepAlive>
+    <component :is="Component" v-if="!isKeepAlive" />
+  </RouterView>
 </template>

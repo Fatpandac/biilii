@@ -8,7 +8,7 @@ defineProps<{
 
 <template>
   <div class="flex justify-start">
-    <ElImage class="w-10 h-10 rounded-full shrink-0" :src="avatar" referrerpolicy="no-referrer" lazy />
+    <ElImage class="w-10 h-10 rounded-full shrink-0" :src="avatar" referrerpolicy="no-referrer" loading="lazy" />
     <div class="w-full ml4">
       <span class="text-gray-600 opacity-40">{{ uname }}</span>
       <TextFeild class="mt1">

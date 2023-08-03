@@ -17,7 +17,7 @@ const row = computed(() => props.images.length % 3 || props.images.length / 3)
       :preview-src-list="images"
       fit="cover"
       hide-on-click-modal
-      lazy
+      loading="lazy"
     />
   </div>
 </template>

@@ -14,7 +14,7 @@ const view = computed(() => (props.video as DynamicVideoInfo).stat.play || forma
   <div class="box-border w-full border-gray-300 border-solid rounded-md cursor-pointer mt2 border-1 group">
     <RouterLink :to="`/watch?aid=${video.aid}`">
       <div class="flex">
-        <ElImage referrerpolicy="no-referrer" class="max-h-30 min-w-55 rounded-l-md aspect-video" :src="cover" lazy fit="cover" />
+        <ElImage referrerpolicy="no-referrer" class="max-h-30 min-w-55 rounded-l-md aspect-video" :src="cover" loading="lazy" fit="cover" />
         <div class="relative flex flex-col justify-start w-full h-30 ml2">
           <span class="text-base break-all text-wrap line-clamp-2 group-hover:(text-blue)">{{ video.title }}</span>
           <span class="text-sm text-gray-600 break-all text-wrap line-clamp-2 opacity-40 mt2">{{ video.desc }}</span>

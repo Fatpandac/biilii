@@ -22,11 +22,11 @@ const date = computed(() => dayjs(props.pubdate * 1000).fromNow())
 <template>
   <div class="flex flex-col items-start justify-start cursor-pointer m4">
     <RouterLink :to="`/watch?aid=${id}`">
-      <ElImage :src="pic" class="object-cover w-full transition-all duration-75 aspect-video rounded-xl hover:rounded-none" lazy referrerpolicy="no-referrer" />
+      <ElImage :src="pic" class="object-cover w-full transition-all duration-75 aspect-video rounded-xl hover:rounded-none" loading="lazy" referrerpolicy="no-referrer" />
     </RouterLink>
     <div class="flex flex-row justify-start w-full py2">
       <RouterLink v-if="ownerFace" :to="`/space/${ownerId}`">
-        <ElImage :src="ownerFace" class="w-10 h-10 border-gray-200 border-solid rounded-full shrink-0 border-1" lazy referrerpolicy="no-referrer" />
+        <ElImage :src="ownerFace" class="w-10 h-10 border-gray-200 border-solid rounded-full shrink-0 border-1" loading="lazy" referrerpolicy="no-referrer" />
       </RouterLink>
       <div class="flex flex-col justify-start w-full pl2">
         <RouterLink :to="`/watch?aid=${id}`">

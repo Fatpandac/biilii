@@ -31,7 +31,7 @@ const like = computed(() => {
     <div class="flex items-start justify-start w-full">
       <ElImage
         class="w-12 h-12 border-solid rounded-full border-gray-50 border-1 shrink-0"
-        lazy
+        loading="lazy"
         referrerpolicy="no-referrer" :src="avatarUrl"
       />
       <div class="flex flex-col items-start justify-center w-full p2 pt0">

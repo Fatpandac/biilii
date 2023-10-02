@@ -1,6 +1,6 @@
 <template>
   <ElContainer>
-    <ElHeader class="sticky top-0 z-10 w-screen bg-white">
+    <ElHeader class="sticky top-0 z-10 bg-white">
       <slot name="Header" />
     </ElHeader>
     <ElMain>

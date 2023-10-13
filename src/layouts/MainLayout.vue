@@ -4,7 +4,7 @@
       <slot name="Header" />
     </ElHeader>
     <ElContainer class="h-full">
-      <ElAside class="fixed h-screen bg-white z-10 top-[65px] w-0! sm:w-25! lg:w-60! transition-all duration-75">
+      <ElAside class="fixed h-screen bg-white top-[65px] w-0! sm:w-25! lg:w-60! transition-all duration-75">
         <slot name="Aside" />
       </ElAside>
       <ElMain class="p0! h-full mt-[65px] ml-0 sm:ml-25 lg lg:ml-60">
